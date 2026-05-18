@@ -1,0 +1,6 @@
+node_modules/
+.env
+.token-cache.json
+.token-block.json
+.DS_Store
+.claude/
