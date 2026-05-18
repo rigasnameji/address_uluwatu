@@ -520,6 +520,16 @@ a:focus-visible {
   text-transform: uppercase;
 }
 
+.faq-stat-band strong {
+  font-size: clamp(1.65rem, 2.8vw, 3rem);
+  white-space: nowrap;
+}
+
+.location-stat-band strong {
+  font-size: clamp(1.65rem, 2.8vw, 3rem);
+  white-space: nowrap;
+}
+
 .section-pad {
   padding: clamp(74px, 9vw, 126px) clamp(18px, 5vw, 72px);
 }
@@ -1799,13 +1809,33 @@ a:focus-visible {
 
 .villa-proof-strip {
   grid-template-columns: repeat(6, minmax(0, 1fr));
+  margin-top: -20px;
 }
 
-.villa-proof-strip div {
+.home-proof-strip,
+.family-proof-strip,
+.group-proof-strip {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin-top: -20px;
+}
+
+.events-proof-strip,
+.wedding-proof-strip,
+.retreat-proof-strip {
+  margin-top: -20px;
+}
+
+.villa-proof-strip div,
+.home-proof-strip div,
+.family-proof-strip div,
+.group-proof-strip div {
   min-height: 116px;
 }
 
-.villa-proof-strip strong {
+.villa-proof-strip strong,
+.home-proof-strip strong,
+.family-proof-strip strong,
+.group-proof-strip strong {
   font-size: clamp(1.7rem, 2.7vw, 3rem);
 }
 
@@ -2291,6 +2321,10 @@ a:focus-visible {
   min-height: 78svh;
 }
 
+.faq-hero > img {
+  object-position: center 18%;
+}
+
 .faq-intro {
   background: var(--paper);
 }
@@ -2676,7 +2710,21 @@ details.faq-item p {
 }
 
 .fast-response-card {
-  background: var(--ink);
+  position: relative;
+  display: grid;
+  align-content: end;
+  gap: 12px;
+  min-height: 360px;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 8%, rgba(0, 0, 0, 0.68) 62%, rgba(0, 0, 0, 0.86) 100%),
+    url("assets/ayu-hosted-by.jpg");
+  background-position: center 14%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #ffffff;
+}
+
+.fast-response-card h3 {
   color: #ffffff;
 }
 
@@ -2836,6 +2884,12 @@ details.faq-item p {
   align-self: stretch;
 }
 
+.family-feature-media-column {
+  display: grid;
+  gap: 18px;
+  align-self: stretch;
+}
+
 .wedding-feature .feature-media::after {
   content: "";
   position: absolute;
@@ -2852,14 +2906,30 @@ details.faq-item p {
 
 .wedding-feature-cta {
   margin-top: 0;
-  width: auto;
+  width: min(100%, 220px);
   min-width: 0;
   min-height: 48px;
-  max-width: 100%;
-  padding-inline: clamp(18px, 1.8vw, 24px);
+  max-width: 220px;
+  padding-inline: 16px;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   justify-self: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.family-feature-cta {
+  margin-top: 0;
+  width: min(100%, 260px);
+  min-width: 0;
+  min-height: 48px;
+  max-width: 260px;
+  padding-inline: 16px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  justify-self: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .wedding-setup-grid {
@@ -3063,7 +3133,21 @@ details.faq-item p {
 }
 
 .villa-gallery-shell {
-  background: var(--paper);
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.villa-gallery-shell .section-kicker {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.villa-gallery-shell h2,
+.villa-gallery-shell .text-link {
+  color: #ffffff;
+}
+
+.villa-gallery-shell .text-link {
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .villa-gallery-grid {
@@ -3076,7 +3160,7 @@ details.faq-item p {
 .villa-gallery-grid figure {
   margin: 0;
   overflow: hidden;
-  background: var(--stone);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
 }
 
@@ -3389,6 +3473,10 @@ details.faq-item p {
 .reviews-stack {
   display: grid;
   gap: 18px;
+}
+
+.villa-reviews-section {
+  background: #e4e4e4;
 }
 
 .reviews-stack .review-themes,
@@ -3773,6 +3861,10 @@ details.faq-item p {
     order: 2;
   }
 
+  .family-feature-media-column {
+    order: 2;
+  }
+
   .amenities-layout {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -4096,6 +4188,7 @@ details.faq-item p {
 
   .villa-proof-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0;
   }
 
   .contact-proof-strip {
