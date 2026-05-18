@@ -371,10 +371,6 @@ h3 {
   text-transform: uppercase;
 }
 
-.home-hero-actions {
-  transform: translateY(-70px);
-}
-
 .booking-card {
   width: 100%;
   max-width: var(--wide);
@@ -489,26 +485,14 @@ a:focus-visible {
 }
 
 .stat-band {
-  position: relative;
-  z-index: 4;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 14px;
   max-width: calc(var(--wide) + 40px);
-  margin: -92px auto 0;
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 22px 20px 0;
   background: var(--paper);
   color: var(--ink);
-}
-
-.stat-band-cta {
-  position: absolute;
-  left: 20px;
-  bottom: calc(100% + 22px);
-  width: auto;
-  min-width: min(100%, 350px);
-  min-height: 64px;
-  padding-inline: 30px;
 }
 
 .stat-band div {
@@ -3996,25 +3980,6 @@ details.faq-item p {
   .stat-band div {
     min-height: 98px;
     border-right: 0;
-  }
-
-  .stat-band {
-    margin-top: -56px;
-    padding-inline: 18px;
-  }
-
-  .stat-band-cta {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    grid-column: 1 / -1;
-    justify-self: stretch;
-    min-width: 0;
-    margin-bottom: 8px;
-  }
-
-  .home-hero-actions {
-    transform: none;
   }
 
   .section-heading {
