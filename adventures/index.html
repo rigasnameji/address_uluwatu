@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bali Adventures &amp; Experiences | Address Bali Villa</title>
+    <meta
+      name="description"
+      content="Private Bali experiences for Address Bali Villa guests: boat charters, snorkeling, diving, surfing, helicopter rides, massage, yoga, dining nights, drivers, and airport transfers."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .adventure-hero {
+        position: relative;
+        min-height: 92vh;
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        padding: 160px clamp(20px, 5vw, 96px) 96px;
+        color: #fff;
+        background: #080808;
+      }
+
+      .adventure-hero video,
+      .adventure-hero img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.72;
+      }
+
+      .adventure-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 78% 18%, rgba(46, 211, 111, 0.16), transparent 26%),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.56) 44%, rgba(0, 0, 0, 0.28) 100%),
+          linear-gradient(0deg, rgba(0, 0, 0, 0.78), transparent 44%);
+      }
+
+      .adventure-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 980px;
+      }
+
+      .adventure-hero h1 {
+        max-width: 980px;
+        color: #fff;
+        font-size: clamp(4.8rem, 11vw, 11rem);
+        line-height: 0.82;
+      }
+
+      .adventure-hero p {
+        max-width: 780px;
+        margin: 24px 0 0;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: clamp(1.15rem, 2vw, 1.55rem);
+        line-height: 1.48;
+      }
+
+      .adventure-actions,
+      .adventure-card-actions,
+      .package-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .adventure-actions .button,
+      .adventure-card-actions .button,
+      .package-actions .button {
+        width: auto;
+      }
+
+      .adventure-trust-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: -54px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .adventure-trust-row article,
+      .adventure-category-card,
+      .adventure-package,
+      .adventure-faq details {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: #f8f8f8;
+        padding: 26px;
+      }
+
+      .adventure-trust-row span,
+      .adventure-category-card span,
+      .experience-card span,
+      .adventure-package span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .adventure-trust-row strong {
+        display: block;
+        margin-top: 10px;
+        color: var(--ink);
+        font-size: 1.1rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .adventure-category-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .adventure-category-card {
+        min-height: 100%;
+      }
+
+      .adventure-category-card h3 {
+        margin-top: 12px;
+        font-size: 1.45rem;
+      }
+
+      .adventure-category-card ul {
+        display: grid;
+        gap: 10px;
+        margin: 22px 0 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+      }
+
+      .popular-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .popular-strip article {
+        min-height: 300px;
+        position: relative;
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        border-radius: var(--radius);
+        padding: 24px;
+        color: #fff;
+        background: #111;
+      }
+
+      .popular-strip img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 260ms ease;
+      }
+
+      .popular-strip article::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.12) 62%);
+      }
+
+      .popular-strip article:hover img {
+        transform: scale(1.035);
+      }
+
+      .popular-strip div {
+        position: relative;
+        z-index: 1;
+      }
+
+      .popular-strip span {
+        display: inline-flex;
+        margin-bottom: 12px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(46, 211, 111, 0.92);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .popular-strip h3 {
+        color: #fff;
+        font-size: 1.35rem;
+      }
+
+      .experience-grid {
+        display: grid;
+        gap: 28px;
+      }
+
+      .experience-card {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1.12fr);
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: #f8f8f8;
+      }
+
+      .experience-card > img {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        object-fit: cover;
+      }
+
+      .experience-card-body {
+        display: grid;
+        align-content: center;
+        gap: 22px;
+        padding: clamp(28px, 5vw, 58px);
+      }
+
+      .experience-card h3 {
+        font-size: clamp(2.1rem, 4vw, 4.6rem);
+        line-height: 0.92;
+      }
+
+      .experience-card p {
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 1.08rem;
+        line-height: 1.58;
+      }
+
+      .experience-badges,
+      .experience-details {
+        display: grid;
+        gap: 10px;
+      }
+
+      .experience-badges {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .experience-badges li,
+      .experience-details li {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        list-style: none;
+      }
+
+      .experience-badges li {
+        padding: 13px 14px;
+        color: var(--ink);
+        font-weight: 900;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+
+      .experience-details {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin: 0;
+        padding: 0;
+      }
+
+      .experience-details li {
+        padding: 14px;
+      }
+
+      .experience-details span {
+        margin-bottom: 8px;
+      }
+
+      .experience-details strong {
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .package-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .adventure-package {
+        display: grid;
+        gap: 20px;
+        align-content: start;
+      }
+
+      .adventure-package h3 {
+        font-size: 2rem;
+      }
+
+      .adventure-package ul {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .adventure-booking {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.42fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .adventure-booking-note {
+        position: sticky;
+        top: 96px;
+        border-radius: var(--radius-lg);
+        background: #050505;
+        color: #fff;
+        padding: 34px;
+      }
+
+      .adventure-booking-note h3 {
+        color: #fff;
+      }
+
+      .adventure-booking-note p {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .adventure-faq {
+        display: grid;
+        gap: 12px;
+      }
+
+      .adventure-testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .adventure-testimonial {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        background: #f8f8f8;
+      }
+
+      .adventure-testimonial img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+      }
+
+      .adventure-testimonial div {
+        display: grid;
+        gap: 14px;
+        padding: 26px;
+      }
+
+      .adventure-testimonial p {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .adventure-testimonial strong {
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .adventure-faq details summary {
+        cursor: pointer;
+        color: var(--ink);
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .adventure-faq details p {
+        margin-top: 14px;
+        color: var(--muted);
+      }
+
+      .whatsapp-sticky {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 20;
+        box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+      }
+
+      @media (max-width: 980px) {
+        .adventure-trust-row,
+        .adventure-category-grid,
+        .popular-strip,
+        .adventure-testimonial-grid,
+        .package-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .experience-card,
+        .adventure-booking {
+          grid-template-columns: 1fr;
+        }
+
+        .experience-card > img {
+          min-height: 340px;
+        }
+
+        .adventure-booking-note {
+          position: static;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .adventure-hero {
+          min-height: 82vh;
+          padding: 130px 20px 70px;
+        }
+
+        .adventure-trust-row,
+        .adventure-category-grid,
+        .popular-strip,
+        .adventure-testimonial-grid,
+        .experience-badges,
+        .experience-details,
+        .package-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .adventure-actions .button,
+        .adventure-card-actions .button,
+        .package-actions .button,
+        .whatsapp-sticky {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .whatsapp-sticky {
+          left: 14px;
+          right: 14px;
+          bottom: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="../index.html" aria-label="Address Bali home"><span>AddressBali<sup>&reg;</sup></span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
+      <nav class="main-nav" aria-label="Primary navigation" data-nav>
+        <a href="../index.html">Home</a><a href="../villa.html">Villa</a>
+        <div class="nav-group"><a href="../events-retreats.html">Events</a><div class="nav-dropdown" aria-label="Events submenu"><a href="../weddings.html">Weddings</a><a href="../retreats.html">Retreats</a><a href="../family-groups.html">Families</a><a href="../large-group-stays.html">Groups</a></div></div>
+        <a href="../services-experiences.html">Experiences</a><a href="../location.html">Location</a><a href="../faq.html">FAQ</a><a href="../contact-concierge.html">Contact</a><a class="nav-book" href="../index.html#direct-booking-heading">Book Now</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="adventure-hero">
+        <video autoplay muted loop playsinline poster="../assets/services-bali-adventures-generated.png">
+          <source src="../assets/addressbali-v2-shorter.mp4" type="video/mp4" />
+        </video>
+        <div class="adventure-hero-content">
+          <div class="breadcrumb"><a href="../index.html">Home</a> / Adventures</div>
+          <p class="eyebrow">Private Bali concierge</p>
+          <h1>Enhance Your <span class="editorial-word">Bali</span> Stay</h1>
+          <p>Private experiences, wellness, adventures, dining, and transport — all arranged directly for your stay in Uluwatu.</p>
+          <div class="adventure-actions">
+            <a class="button button-primary" href="#booking">Book Experiences</a>
+            <a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%20team%2C%20I%27d%20like%20to%20book%20a%20Bali%20experience." target="_blank" rel="noopener noreferrer">WhatsApp Concierge</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad muted-section">
+        <div class="adventure-trust-row">
+          <article><span>Curated</span><strong>Local experiences</strong></article>
+          <article><span>Partners</span><strong>Trusted private teams</strong></article>
+          <article><span>Support</span><strong>Personal concierge assistance</strong></article>
+          <article><span>Booking</span><strong>Manual confirmation</strong></article>
+        </div>
+      </section>
+
+      <section class="section-pad">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>01 / 07</span> Browse Categories</p>
+            <h2>Choose The <span class="editorial-word">Mood</span> Of The Day</h2>
+          </div>
+          <a class="text-link" href="#booking">Plan with concierge</a>
+        </div>
+
+        <div class="adventure-category-grid">
+          <article class="adventure-category-card">
+            <span>Ocean &amp; Adventure</span>
+            <h3>Private ocean days, surf breaks, and sky views.</h3>
+            <ul>
+              <li>Private Boat Charter</li>
+              <li>Snorkeling Trip</li>
+              <li>Diving Trip</li>
+              <li>Fishing Trip</li>
+              <li>Surfing</li>
+              <li>Helicopter Ride</li>
+            </ul>
+          </article>
+          <article class="adventure-category-card">
+            <span>Wellness &amp; Spiritual</span>
+            <h3>Recovery, movement, and Balinese rituals.</h3>
+            <ul>
+              <li>Massage</li>
+              <li>Yoga</li>
+              <li>Balinese Blessing</li>
+              <li>Medical Clinic</li>
+            </ul>
+          </article>
+          <article class="adventure-category-card">
+            <span>Dining Experiences</span>
+            <h3>Private villa evenings made for groups.</h3>
+            <ul>
+              <li>Balinese Evening</li>
+              <li>Mexican Night</li>
+              <li>Grazing Platters</li>
+            </ul>
+          </article>
+          <article class="adventure-category-card">
+            <span>Transportation</span>
+            <h3>Smooth arrivals, local moves, and full-day routes.</h3>
+            <ul>
+              <li>Private Driver + Vehicle</li>
+              <li>Golf Cart + Driver</li>
+              <li>Airport Transfers</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-pad muted-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>02 / 07</span> Popular Experiences</p>
+            <h2>Guest Favorites To <span class="editorial-word">Book</span> First</h2>
+          </div>
+          <a class="text-link" href="#experiences">View all</a>
+        </div>
+        <div class="popular-strip">
+          <article>
+            <img src="../assets/services-motorboat-header.jpg" alt="Private speedboat in Bali" />
+            <div><span>Most Booked</span><h3>Private Boat Charter</h3></div>
+          </article>
+          <article>
+            <img src="../assets/services-helicopter-ride-generated.png" alt="Helicopter above Bali coastline" />
+            <div><span>Couples Favorite</span><h3>Helicopter Ride</h3></div>
+          </article>
+          <article>
+            <img src="../assets/services-spa-treatments-generated.png" alt="In-villa massage setup" />
+            <div><span>Wellness Experience</span><h3>In-Villa Massage</h3></div>
+          </article>
+          <article>
+            <img src="../assets/services-surf-lessons-generated-1.png" alt="Surfing near Uluwatu" />
+            <div><span>Family Friendly</span><h3>Surfing Near Bingin</h3></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-pad" id="experiences">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>03 / 07</span> Experience Menu</p>
+            <h2>Private Experiences, <span class="editorial-word">Clearly</span> Priced</h2>
+          </div>
+        </div>
+
+        <div class="experience-grid">
+          <article class="experience-card" data-experience="Private Boat Charter">
+            <img src="../assets/services-motorboat-header.jpg" alt="Luxury private speedboat charter in Bali" />
+            <div class="experience-card-body">
+              <span>Ocean &amp; Adventure · Most Booked</span>
+              <h3>Private Boat Charter</h3>
+              <p>Luxury private speedboat for up to 6 guests exploring Nusa Penida and Nusa Lembongan, with crew, drinks, music, towels, and island-ready comfort included.</p>
+              <ul class="experience-badges">
+                <li>Full Day Charter</li>
+                <li>Sunset Cruise Available</li>
+                <li>Snorkeling Equipment Included</li>
+                <li>Drinks &amp; Crew Included</li>
+              </ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Full day or sunset</strong></li>
+                <li><span>Guests</span><strong>Up to 6</strong></li>
+                <li><span>Starting Price</span><strong>IDR 6,500,000</strong></li>
+                <li><span>Location</span><strong>Nusa Penida &amp; Lembongan</strong></li>
+              </ul>
+              <div class="adventure-card-actions">
+                <a class="button button-primary js-experience-pick" href="#booking">Book Experience</a>
+                <a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Private%20Boat%20Charter." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Snorkeling Trip">
+            <img src="../assets/services-snorkeling-trip-generated.png" alt="Private snorkeling trip in clear Bali water" />
+            <div class="experience-card-body">
+              <span>Ocean &amp; Adventure · Family Friendly</span>
+              <h3>Private Snorkeling Adventure</h3>
+              <p>Discover clear-water coral reefs, tropical fish, and scenic island snorkeling spots with a private setup shaped around your group.</p>
+              <ul class="experience-badges"><li>Private Guide</li><li>Equipment Included</li><li>Nusa Routes Available</li><li>Relaxed Ocean Day</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Half or full day</strong></li><li><span>Guests</span><strong>Small groups</strong></li><li><span>Starting Price</span><strong>On request</strong></li><li><span>Location</span><strong>Bali reefs</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Snorkeling%20Trip." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Diving Trip">
+            <img src="../assets/services-diving-trip-generated.png" alt="Private Bali diving trip" />
+            <div class="experience-card-body">
+              <span>Ocean &amp; Adventure</span>
+              <h3>Private Diving Trip</h3>
+              <p>Explore Bali’s underwater world with dive partners for certified divers or beginner-friendly discovery experiences around tropical reef sites.</p>
+              <ul class="experience-badges"><li>Certified &amp; Beginner Options</li><li>Private Dive Partners</li><li>Reef Sites</li><li>Equipment Arranged</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>By dive plan</strong></li><li><span>Guests</span><strong>Private group</strong></li><li><span>Starting Price</span><strong>On request</strong></li><li><span>Location</span><strong>Nusa area</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Diving%20Trip." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Fishing Trip">
+            <img src="../assets/services-fishing-trip-generated-v2.png" alt="Private fishing trip aboard MISSION speedboat" />
+            <div class="experience-card-body">
+              <span>Ocean &amp; Adventure</span>
+              <h3>Private Fishing Trip</h3>
+              <p>A relaxed fishing and sightseeing day around Bali’s coastline and nearby islands aboard the MISSION speedboat with an experienced crew.</p>
+              <ul class="experience-badges"><li>MISSION Speedboat</li><li>Experienced Crew</li><li>Island Views</li><li>Small Group Friendly</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Custom trip</strong></li><li><span>Guests</span><strong>Small groups</strong></li><li><span>Starting Price</span><strong>On request</strong></li><li><span>Location</span><strong>Bali coastline</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Fishing%20Trip." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Surfing">
+            <img src="../assets/services-surf-lessons-generated-1.png" alt="Surfing experience near Bingin and Uluwatu" />
+            <div class="experience-card-body">
+              <span>Ocean &amp; Adventure · Family Friendly</span>
+              <h3>Surfing Near Bingin</h3>
+              <p>Surf Bali’s famous breaks near Bingin, Padang Padang, Dreamland, Balangan, and Uluwatu with board rental and guidance available.</p>
+              <ul class="experience-badges"><li>Board Included</li><li>Rash Guard Included</li><li>Lessons Available</li><li>Beginner To Advanced</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Session based</strong></li><li><span>Guests</span><strong>Private or group</strong></li><li><span>Starting Price</span><strong>IDR 500k</strong></li><li><span>Location</span><strong>Bingin area</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20Surfing." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Helicopter Ride">
+            <img src="../assets/services-helicopter-ride-generated.png" alt="Private helicopter ride over Bali" />
+            <div class="experience-card-body">
+              <span>Ocean &amp; Adventure · Couples Favorite</span>
+              <h3>Private Helicopter Ride</h3>
+              <p>See Bali from above with private aerial views of Uluwatu cliffs, beaches, the Indian Ocean, and coral reefs — perfect for celebrations.</p>
+              <ul class="experience-badges"><li>Private Flight</li><li>Romantic Upgrade</li><li>Cliff Views</li><li>Celebration Ready</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>From 12 minutes</strong></li><li><span>Guests</span><strong>2+ guests</strong></li><li><span>Starting Price</span><strong>IDR 6,700,000</strong></li><li><span>Location</span><strong>Bali coastline</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Helicopter%20Ride." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Massage">
+            <img src="../assets/services-spa-treatments-generated.png" alt="In-villa massage treatment" />
+            <div class="experience-card-body">
+              <span>Wellness &amp; Spiritual · Wellness Experience</span>
+              <h3>In-Villa Massage</h3>
+              <p>Relax without leaving the villa. A masseur comes directly to you for Balinese, deep tissue, relaxation, or recovery treatments.</p>
+              <ul class="experience-badges"><li>In-Villa Service</li><li>Balinese Massage</li><li>Deep Tissue Available</li><li>Recovery Treatments</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>30–90 minutes</strong></li><li><span>Guests</span><strong>Solo or group</strong></li><li><span>Starting Price</span><strong>IDR 150k</strong></li><li><span>Location</span><strong>At the villa</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20Massage." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Yoga">
+            <img src="../assets/services-yogaaddress.avif" alt="Private yoga session at Address Bali Villa" />
+            <div class="experience-card-body">
+              <span>Wellness &amp; Spiritual</span>
+              <h3>Private Yoga Session</h3>
+              <p>Private or group yoga at the villa for all experience levels, tailored for relaxation, flexibility, strength, mindfulness, or retreat flow.</p>
+              <ul class="experience-badges"><li>Private Instructor</li><li>Group Friendly</li><li>Retreat Ready</li><li>All Levels</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Custom session</strong></li><li><span>Guests</span><strong>5+ guests</strong></li><li><span>Starting Price</span><strong>IDR 400k</strong></li><li><span>Location</span><strong>At the villa</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20Yoga." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Balinese Blessing">
+            <img src="../assets/retreats-meditation-mindfulness.jpg" alt="Balinese blessing and mindfulness ritual" />
+            <div class="experience-card-body">
+              <span>Wellness &amp; Spiritual</span>
+              <h3>Balinese Blessing</h3>
+              <p>A traditional Balinese blessing or cleansing ceremony designed around your intentions, positive energy, spiritual balance, and local tradition.</p>
+              <ul class="experience-badges"><li>Blessing Ceremony</li><li>Cleansing Available</li><li>Personalized Intention</li><li>Local Tradition</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>By ceremony</strong></li><li><span>Guests</span><strong>Private group</strong></li><li><span>Starting Price</span><strong>On request</strong></li><li><span>Location</span><strong>Villa or temple</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Balinese%20Blessing." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Balinese Evening">
+            <img src="../assets/wedding-dinner.jpeg" alt="Balinese private dining evening" />
+            <div class="experience-card-body">
+              <span>Dining Experiences</span>
+              <h3>A Balinese Evening</h3>
+              <p>An authentic cultural evening with traditional Balinese dance performances and a generous feast of classic local dishes and desserts.</p>
+              <ul class="experience-badges"><li>Balinese Dance</li><li>Private Villa Feast</li><li>Group Dining</li><li>Cultural Evening</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Evening</strong></li><li><span>Guests</span><strong>Villa group</strong></li><li><span>Starting Price</span><strong>IDR 250k++ pp</strong></li><li><span>Location</span><strong>At the villa</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Balinese%20Evening." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Mexican Night">
+            <img src="../assets/group-stays-dining.jpeg" alt="Private group dining night at the villa" />
+            <div class="experience-card-body">
+              <span>Dining Experiences</span>
+              <h3>Mexican Night</h3>
+              <p>A vibrant sharing-style dinner with ceviche, tacos, nachos, salads, and tropical flavors for relaxed evenings with friends and family.</p>
+              <ul class="experience-badges"><li>Ceviche &amp; Tacos</li><li>Sharing Dinner</li><li>Group Friendly</li><li>Villa Hosted</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Evening</strong></li><li><span>Guests</span><strong>Villa group</strong></li><li><span>Starting Price</span><strong>IDR 250k++ pp</strong></li><li><span>Location</span><strong>At the villa</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20Mexican%20Night." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Grazing Platter">
+            <img src="../assets/villa-dining.jpeg" alt="Grazing platter and private villa dining" />
+            <div class="experience-card-body">
+              <span>Dining Experiences</span>
+              <h3>Grazing Platters</h3>
+              <p>Beautiful platters with cheeses, dips, antipasto, breads, crackers, fruits, nuts, snacks, and optional deli, vegan, or gluten-free upgrades.</p>
+              <ul class="experience-badges"><li>Platters For 2–10</li><li>Vegan Options</li><li>Gluten-Free Options</li><li>Arrival Friendly</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Prepared for arrival</strong></li><li><span>Guests</span><strong>2–10 guests</strong></li><li><span>Starting Price</span><strong>IDR 500k</strong></li><li><span>Location</span><strong>At the villa</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Grazing%20Platter." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Private Driver + Vehicle">
+            <img src="../assets/services-airport-transfers-generated.png" alt="Private driver and vehicle in Bali" />
+            <div class="experience-card-body">
+              <span>Transportation</span>
+              <h3>Private Driver + Vehicle</h3>
+              <p>Comfortable private driver service for sightseeing, beach trips, restaurants, shopping, and flexible Bali routes at your own pace.</p>
+              <ul class="experience-badges"><li>Half Day Available</li><li>Full Day Available</li><li>Avanza Or APV</li><li>Flexible Routes</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>4, 8, or 10 hours</strong></li><li><span>Guests</span><strong>By vehicle</strong></li><li><span>Starting Price</span><strong>IDR 1,600k</strong></li><li><span>Location</span><strong>Across Bali</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Private%20Driver%20and%20Vehicle." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Golf Cart + Driver">
+            <img src="../assets/location-overview.jpeg" alt="Local Uluwatu transportation near Bingin" />
+            <div class="experience-card-body">
+              <span>Transportation</span>
+              <h3>Golf Cart + Driver</h3>
+              <p>Easy local transport with a driver included, ideal for short moves around the area and comfortable access for villa guests.</p>
+              <ul class="experience-badges"><li>Driver Included</li><li>Local Trips</li><li>Up To 10km One Way</li><li>Overtime Available</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Trip based</strong></li><li><span>Guests</span><strong>By cart</strong></li><li><span>Starting Price</span><strong>IDR 1,000k</strong></li><li><span>Location</span><strong>Bingin area</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20a%20Golf%20Cart%20and%20Driver." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Airport Transfers">
+            <img src="../assets/services-bali-adventures-generated.png" alt="Private Bali transport service" />
+            <div class="experience-card-body">
+              <span>Transportation</span>
+              <h3>Airport Transfers &amp; Bali Transport</h3>
+              <p>Private transport across Bali with Toyota Fortuner and Toyota Alphard options for airports, beach clubs, restaurants, shopping, and long-distance trips.</p>
+              <ul class="experience-badges"><li>Airport Transfers</li><li>Fortuner Available</li><li>Alphard Available</li><li>Long-Distance Routes</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>Trip based</strong></li><li><span>Guests</span><strong>By vehicle</strong></li><li><span>Starting Price</span><strong>IDR 150k</strong></li><li><span>Location</span><strong>Across Bali</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Book Experience</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20reserve%20Transportation%20Service." target="_blank" rel="noopener noreferrer">Reserve via WhatsApp</a></div>
+            </div>
+          </article>
+
+          <article class="experience-card" data-experience="Medical Clinic">
+            <img src="../assets/ayu-superhost.jpg" alt="Concierge support for villa guests" />
+            <div class="experience-card-body">
+              <span>Wellness &amp; Guest Support</span>
+              <h3>Medical Clinic Support</h3>
+              <p>Medical assistance can be coordinated depending on treatment needs, with the concierge helping guests connect with available local care.</p>
+              <ul class="experience-badges"><li>Concierge Assistance</li><li>Local Clinic Support</li><li>Treatment Dependent</li><li>Guest Care</li></ul>
+              <ul class="experience-details">
+                <li><span>Duration</span><strong>As needed</strong></li><li><span>Guests</span><strong>Villa guests</strong></li><li><span>Starting Price</span><strong>Depends on treatment</strong></li><li><span>Location</span><strong>Local clinic</strong></li>
+              </ul>
+              <div class="adventure-card-actions"><a class="button button-primary js-experience-pick" href="#booking">Request Support</a><a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%2C%20I%27d%20like%20to%20ask%20about%20medical%20clinic%20support." target="_blank" rel="noopener noreferrer">Message Concierge</a></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-pad muted-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>04 / 07</span> Packages</p>
+            <h2>Bundle The Stay Into <span class="editorial-word">Something</span> Bigger</h2>
+          </div>
+        </div>
+        <div class="package-grid">
+          <article class="adventure-package">
+            <span>Ocean Escape Package</span>
+            <h3>Boat, snorkeling, sunset.</h3>
+            <ul><li>Private Boat Charter</li><li>Snorkeling Trip</li><li>Sunset Cruise</li></ul>
+            <div class="package-actions"><a class="button button-primary js-package-pick" href="#booking" data-package="Ocean Escape Package">Plan Package</a></div>
+          </article>
+          <article class="adventure-package">
+            <span>Wellness Package</span>
+            <h3>Recovery and ritual at the villa.</h3>
+            <ul><li>Massage</li><li>Yoga</li><li>Balinese Blessing</li></ul>
+            <div class="package-actions"><a class="button button-primary js-package-pick" href="#booking" data-package="Wellness Package">Plan Package</a></div>
+          </article>
+          <article class="adventure-package">
+            <span>Romantic Bali Package</span>
+            <h3>High-drama moments for two.</h3>
+            <ul><li>Helicopter Ride</li><li>Sunset Cruise</li><li>Grazing Platter</li></ul>
+            <div class="package-actions"><a class="button button-primary js-package-pick" href="#booking" data-package="Romantic Bali Package">Plan Package</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-pad" id="booking">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>05 / 07</span> Booking Flow</p>
+            <h2>Send A Simple <span class="editorial-word">Request</span></h2>
+          </div>
+        </div>
+        <div class="adventure-booking">
+          <form class="form-panel" data-adventure-form>
+            <div class="form-grid">
+              <label><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+              <label><span>Villa</span><input type="text" name="villa" value="Address Bali Villa" required /></label>
+              <label><span>Date</span><input type="date" name="date" required /></label>
+              <label><span>Guests</span><input type="number" name="guests" min="1" placeholder="How many guests?" required /></label>
+              <label>
+                <span>Experience</span>
+                <select name="experience" required data-experience-select>
+                  <option value="">Select experience</option>
+                  <option>Private Boat Charter</option>
+                  <option>Snorkeling Trip</option>
+                  <option>Diving Trip</option>
+                  <option>Fishing Trip</option>
+                  <option>Surfing</option>
+                  <option>Massage</option>
+                  <option>Medical Clinic</option>
+                  <option>Yoga</option>
+                  <option>Balinese Blessing</option>
+                  <option>Helicopter Ride</option>
+                  <option>Balinese Evening</option>
+                  <option>Mexican Night</option>
+                  <option>Grazing Platter</option>
+                  <option>Private Driver + Vehicle</option>
+                  <option>Golf Cart + Driver</option>
+                  <option>Airport Transfers</option>
+                  <option>Ocean Escape Package</option>
+                  <option>Wellness Package</option>
+                  <option>Romantic Bali Package</option>
+                </select>
+              </label>
+              <label><span>WhatsApp Number</span><input type="tel" name="phone" autocomplete="tel" required /></label>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">Send Via WhatsApp</button>
+              <a class="button button-secondary" href="https://wa.me/6282229299866" target="_blank" rel="noopener noreferrer">WhatsApp Concierge</a>
+            </div>
+          </form>
+          <aside class="adventure-booking-note">
+            <p class="eyebrow">Concierge confirms manually</p>
+            <h3>No calendars, no complicated checkout.</h3>
+            <p>Send your preferred date, guest count, and experience. The concierge confirms availability, final pricing, inclusions, and pickup details directly on WhatsApp.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section-pad muted-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>06 / 07</span> Trust</p>
+            <h2>Guest-Ready <span class="editorial-word">Experiences</span></h2>
+          </div>
+        </div>
+        <div class="adventure-testimonial-grid">
+          <article class="adventure-testimonial">
+            <img src="../assets/services-motorboat-header.jpg" alt="Guest boat day experience around Bali" />
+            <div>
+              <strong>Ocean days</strong>
+              <p>Private boat days are arranged with trusted crews, clear inclusions, and a concierge-confirmed plan before departure.</p>
+            </div>
+          </article>
+          <article class="adventure-testimonial">
+            <img src="../assets/services-yogaaddress.avif" alt="Private wellness session at the villa" />
+            <div>
+              <strong>Wellness at home</strong>
+              <p>Massage, yoga, and rituals can be arranged directly at the villa, keeping the day private, relaxed, and easy for groups.</p>
+            </div>
+          </article>
+          <article class="adventure-testimonial">
+            <img src="../assets/group-stays-dining.jpeg" alt="Private dining experience at Address Bali Villa" />
+            <div>
+              <strong>Hosted evenings</strong>
+              <p>Dining experiences are designed for villa groups: no restaurant logistics, just a curated evening around your schedule.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-pad muted-section">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span>07 / 07</span> FAQ</p>
+            <h2>Before You <span class="editorial-word">Book</span></h2>
+          </div>
+        </div>
+        <div class="adventure-faq">
+          <details open><summary>Can everything be arranged after we arrive?</summary><p>Yes, but premium experiences such as boats, helicopters, ceremonies, and private dining are best requested early so the concierge can confirm trusted partners.</p></details>
+          <details><summary>Do we pay online?</summary><p>No. This first version keeps the booking flow simple: send an inquiry, then the concierge confirms availability, inclusions, and payment details manually.</p></details>
+          <details><summary>Can experiences be customized for groups?</summary><p>Yes. Most activities can be shaped around your group size, villa schedule, wellness plans, dining preferences, and transport needs.</p></details>
+          <details><summary>Are prices final?</summary><p>Some prices are fixed starting rates, while others depend on treatment, destination, route, guest count, timing, and partner availability.</p></details>
+        </div>
+      </section>
+
+      <section class="page-cta section-pad">
+        <p class="eyebrow">WhatsApp concierge</p>
+        <h2>Want The Whole Stay <span class="editorial-word">Curated</span>?</h2>
+        <p>Send the team your dates, group size, and dream experiences. They will help shape a clean proposal before you arrive.</p>
+        <div class="cta-actions">
+          <a class="button button-primary" href="#booking">Book Experiences</a>
+          <a class="button button-secondary" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%20team%2C%20I%27d%20like%20help%20curating%20Bali%20experiences%20for%20my%20stay." target="_blank" rel="noopener noreferrer">WhatsApp Concierge</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-shell">
+        <div class="site-footer-top">
+          <a class="brand" href="../index.html" aria-label="Address Bali home"><span>AddressBali<sup>&reg;</sup></span></a>
+          <a class="footer-social-link" href="https://www.instagram.com/addressbali_uluwatu/" target="_blank" rel="noreferrer" aria-label="Follow Address Bali on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect><circle cx="12" cy="12" r="4.25"></circle><circle cx="17.5" cy="6.5" r="1"></circle>
+            </svg>
+          </a>
+        </div>
+        <p>Luxury villa stays, retreats, weddings, and concierge experiences in Bingin, Bali.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="../index.html">Home</a>
+          <a href="../villa.html">Villa</a>
+          <a href="../gallery.html">Gallery</a>
+          <a href="../events-retreats.html">Events</a>
+          <a href="../weddings.html">Weddings</a>
+          <a href="../retreats.html">Retreats</a>
+          <a href="../family-groups.html">Families</a>
+          <a href="../large-group-stays.html">Groups</a>
+          <a href="../services-experiences.html">Experiences</a>
+          <a href="../location.html">Location</a>
+          <a href="../faq.html">FAQ</a>
+          <a href="../contact-concierge.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <a class="button button-primary whatsapp-sticky" href="https://wa.me/6282229299866?text=Hi%20Address%20Bali%20Villa%20team%2C%20I%27d%20like%20to%20ask%20about%20Bali%20experiences." target="_blank" rel="noopener noreferrer">WhatsApp Concierge</a>
+    <script src="../script.js"></script>
+    <script>
+      const conciergeNumber = "6282229299866";
+      const experienceSelect = document.querySelector("[data-experience-select]");
+
+      document.querySelectorAll(".js-experience-pick").forEach((button) => {
+        button.addEventListener("click", () => {
+          const card = button.closest("[data-experience]");
+          if (card && experienceSelect) experienceSelect.value = card.dataset.experience;
+        });
+      });
+
+      document.querySelectorAll(".js-package-pick").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (experienceSelect) experienceSelect.value = button.dataset.package;
+        });
+      });
+
+      document.querySelector("[data-adventure-form]").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+        const message = [
+          "Hi Address Bali Villa team, I'd like to book an experience.",
+          "",
+          `Name: ${formData.get("name") || ""}`,
+          `Villa: ${formData.get("villa") || ""}`,
+          `Date: ${formData.get("date") || ""}`,
+          `Guests: ${formData.get("guests") || ""}`,
+          `Experience: ${formData.get("experience") || ""}`,
+          `WhatsApp number: ${formData.get("phone") || ""}`,
+        ].join("\n");
+        window.open(`https://wa.me/${conciergeNumber}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+      });
+    </script>
+  </body>
+</html>
