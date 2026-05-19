@@ -457,7 +457,7 @@ const initDirectBooking = () => {
   ];
 
   const isMockMode = new URLSearchParams(window.location.search).get("mock") === "1";
-  const apiBase = ( window.location.protocol === "file:" || window.location.hostname === "localhost") ? "http://localhost:3001" : "";
+  const apiBase = ( window.location.protocol === "file:" || window.location.hostname === "localhost") ? "http://localhost:3001" : "https://addressuluwatu-production.up.railway.app";
 
   const monthsNode = root.querySelector("[data-calendar-months]");
   const statusNode = root.querySelector("[data-calendar-status]");
