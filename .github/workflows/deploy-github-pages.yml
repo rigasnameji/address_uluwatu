@@ -1,0 +1,48 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "ADDRESS/WEBSITE/**"
+      - ".github/workflows/deploy-github-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish ADDRESS/WEBSITE to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          mkdir -p /tmp/address-website
+          rsync -a --delete ADDRESS/WEBSITE/ /tmp/address-website/
+
+          git fetch origin gh-pages
+          git switch gh-pages
+
+          find . -mindepth 1 -maxdepth 1 ! -name ".git" -exec rm -rf {} +
+          rsync -a /tmp/address-website/ ./
+          touch .nojekyll
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No GitHub Pages changes to deploy."
+            exit 0
+          fi
+
+          git commit -m "Deploy ADDRESS/WEBSITE to GitHub Pages"
+          git push origin gh-pages

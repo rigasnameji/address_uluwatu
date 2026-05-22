@@ -22,4 +22,4 @@ jobs:
             --exclude=".github" \
             --exclude=".DS_Store" \
             -e "ssh -i ~/.ssh/cpanel_key -p ${{ secrets.CPANEL_PORT }}" \
-            ./ "${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:/home/${{ secrets.CPANEL_USER }}/public_html/"
+            ./ADDRESS/WEBSITE/ "${{ secrets.CPANEL_USER }}@${{ secrets.CPANEL_HOST }}:/home/${{ secrets.CPANEL_USER }}/public_html/"
