@@ -60,9 +60,9 @@ router.post('/', async (req, res) => {
     console.log('Email sent:', response.data.id);
     res.json({ success: true, message: 'Enquiry sent successfully' });
   } catch (err) {
-    const errMsg = err?.response?.data?.message || err.message;
-    console.error('Resend error:', errMsg);
-    res.status(500).json({ error: 'Failed to send email. Please try again.' });
+    const errMsg = err?.response?.data?.message || err?.response?.data?.name || err.message;
+    console.error('Resend error:', JSON.stringify(err?.response?.data || err.message));
+    res.status(500).json({ error: errMsg || 'Failed to send email. Please try again.' });
   }
 });
 
