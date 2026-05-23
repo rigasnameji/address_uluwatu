@@ -311,7 +311,7 @@ conciergeForms.forEach((form) => {
       setConciergeFormStatus(
         form,
         "success",
-        "Your enquiry was sent to addressbaliulu@gmail.com. You should hear back within a few hours.",
+        "Your enquiry has been sent to the villa team. You should hear back within a few hours.",
       );
     } catch (error) {
       const isFilePage = window.location.protocol === "file:";
