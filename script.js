@@ -186,26 +186,25 @@ const setConciergeFormSubmitting = (form, isSubmitting) => {
 };
 
 const submitConciergeForm = async (form) => {
-  const action = form.getAttribute("action") || `https://formsubmit.co/${CONCIERGE_EMAIL}`;
-  const endpoint = action.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
   const formData = new FormData(form);
-  const originField = form.querySelector("[data-form-url]");
+  const body = {};
+  formData.forEach((value, key) => {
+    if (body[key]) {
+      body[key] = [].concat(body[key], value);
+    } else {
+      body[key] = value;
+    }
+  });
+  body._url = window.location.href;
 
-  if (originField) {
-    originField.value = window.location.href;
-    formData.set("_url", originField.value);
-  }
+  const apiBase = (window.location.protocol === "file:" || window.location.hostname === "localhost")
+    ? "http://localhost:3001"
+    : "https://addressuluwatu-production.up.railway.app";
 
-  if (formData.get("email")) {
-    formData.set("_replyto", String(formData.get("email")));
-  }
-
-  const response = await fetch(endpoint, {
+  const response = await fetch(`${apiBase}/api/contact`, {
     method: "POST",
-    headers: {
-      Accept: "application/json",
-    },
-    body: formData,
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(body),
   });
 
   let payload = null;
@@ -216,7 +215,7 @@ const submitConciergeForm = async (form) => {
   }
 
   if (!response.ok || payload?.success === false) {
-    const message = payload?.message || "Unable to send the enquiry right now.";
+    const message = payload?.error || "Unable to send the enquiry right now.";
     throw new Error(message);
   }
 };

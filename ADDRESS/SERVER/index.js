@@ -7,6 +7,7 @@ const listingRouter = require('./routes/listing');
 const calendarRouter = require('./routes/calendar');
 const quotesRouter = require('./routes/quotes');
 const reservationsRouter = require('./routes/reservations');
+const contactRouter = require('./routes/contact');
 
 const app = express();
 app.use(cors({ origin: process.env.ALLOWED_ORIGIN || '*' }));
@@ -17,6 +18,7 @@ app.use('/api/listing', listingRouter);
 app.use('/api/calendar', calendarRouter);
 app.use('/api/quotes', quotesRouter);
 app.use('/api/reservations', reservationsRouter);
+app.use('/api/contact', contactRouter);
 app.get('/health', (_, res) => res.json({ ok: true }));
 
 // Serve static website
