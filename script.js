@@ -293,6 +293,10 @@ bookingForms.forEach((form) => {
 conciergeForms.forEach((form) => {
   setDateMinimums(form);
   fillConciergeFormFromUrl(form);
+  // Auto-scroll to form if user arrived via a redirect from another page
+  if (window.location.search && document.referrer) {
+    setTimeout(() => form.scrollIntoView({ behavior: "smooth", block: "start" }), 300);
+  }
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
