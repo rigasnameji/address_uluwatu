@@ -1,5 +1,5 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
+const axios = require('axios');
 
 const router = express.Router();
 
@@ -15,20 +15,13 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: 'Invalid email address' });
   }
 
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    console.error('SMTP credentials not configured');
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not configured');
     return res.status(500).json({ error: 'Email service not configured' });
   }
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-
   const inclusions = Array.isArray(include) ? include.join(', ') : include || '—';
+  const toEmail = process.env.NOTIFY_EMAIL || 'addressbaliulu@gmail.com';
 
   const html = `
     <h2 style="font-family:sans-serif">New Enquiry — Address Bali Villa</h2>
@@ -47,17 +40,28 @@ router.post('/', async (req, res) => {
   `;
 
   try {
-    await transporter.sendMail({
-      from: `"Address Bali Villa" <${process.env.SMTP_USER}>`,
-      to: process.env.NOTIFY_EMAIL || process.env.SMTP_USER,
-      replyTo: email,
-      subject: `New Enquiry from ${name} — Address Bali Villa`,
-      html,
-    });
+    const response = await axios.post(
+      'https://api.resend.com/emails',
+      {
+        from: 'Address Bali Villa <onboarding@resend.dev>',
+        to: [toEmail],
+        reply_to: email,
+        subject: `New Enquiry from ${name} — Address Bali Villa`,
+        html,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
+    console.log('Email sent:', response.data.id);
     res.json({ success: true, message: 'Enquiry sent successfully' });
   } catch (err) {
-    console.error('Contact email error:', err.message);
+    const errMsg = err?.response?.data?.message || err.message;
+    console.error('Resend error:', errMsg);
     res.status(500).json({ error: 'Failed to send email. Please try again.' });
   }
 });
