@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     const response = await axios.post(
       'https://api.resend.com/emails',
       {
-        from: 'Address Bali Villa <onboarding@resend.dev>',
+        from: 'Address Bali Villa <info@addressbaliuluwatu.com>',
         to: [toEmail],
         reply_to: email,
         subject: `New Enquiry from ${name} — Address Bali Villa`,
