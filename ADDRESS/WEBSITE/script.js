@@ -1,7 +1,10 @@
 // Set playback speed on all autoplay looping videos
 document.querySelectorAll("video[autoplay]").forEach((v) => {
-  v.playbackRate = 0.8;
-  v.addEventListener("loadedmetadata", () => { v.playbackRate = 0.8; });
+  const setRate = () => { v.playbackRate = 0.8; };
+  setRate();
+  v.addEventListener("loadedmetadata", setRate);
+  v.addEventListener("play", setRate);
+  v.addEventListener("seeking", setRate);
 });
 
 const header = document.querySelector("[data-header]");
