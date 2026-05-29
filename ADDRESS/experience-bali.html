@@ -1,0 +1,2282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhance Your Stay | Address Bali Villa – Guest Experiences</title>
+    <meta
+      name="description"
+      content="Exclusive add-ons and experiences for Address Bali Villa guests — ocean adventures, in-villa dining, wellness rituals, and private transport curated by our concierge team."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/jpeg" href="assets/favicon.jpg" />
+    <style>
+      /* ── Upsell page–specific styles ─────────────────────────── */
+
+      /* ── Helicopter Modal ──────────────────────────────────── */
+
+      .heli-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 300ms ease;
+      }
+
+      .heli-modal-overlay.is-open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .heli-modal {
+        position: relative;
+        width: 100%;
+        max-width: 860px;
+        max-height: 90vh;
+        background: var(--ink);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(24px) scale(0.98);
+        transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+      }
+
+      .heli-modal-overlay.is-open .heli-modal {
+        transform: translateY(0) scale(1);
+      }
+
+      /* Header strip with hero image */
+      .heli-modal-hero {
+        position: relative;
+        height: 220px;
+        flex-shrink: 0;
+        overflow: hidden;
+      }
+
+      .heli-modal-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.55);
+      }
+
+      .heli-modal-hero-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 28px 32px;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 55%);
+      }
+
+      .heli-modal-eyebrow {
+        color: var(--accent);
+        font-size: 0.62rem;
+        font-weight: 900;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+      }
+
+      .heli-modal-hero h2 {
+        color: #ffffff;
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      /* Close button */
+      .heli-modal-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,0.28);
+        background: rgba(0, 0, 0, 0.42);
+        color: #ffffff;
+        font-size: 1.1rem;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        transition: background 180ms ease, transform 180ms ease;
+      }
+
+      .heli-modal-close:hover {
+        background: rgba(0, 0, 0, 0.72);
+        transform: scale(1.08);
+      }
+
+      /* Scrollable body */
+      .heli-modal-body {
+        overflow-y: auto;
+        padding: 28px 32px 36px;
+        flex: 1;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.18) transparent;
+      }
+
+      .heli-modal-body::-webkit-scrollbar { width: 5px; }
+      .heli-modal-body::-webkit-scrollbar-track { background: transparent; }
+      .heli-modal-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 4px; }
+
+      /* Category group */
+      .heli-cat {
+        margin-bottom: 32px;
+      }
+
+      .heli-cat:last-child { margin-bottom: 0; }
+
+      .heli-cat-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .heli-cat-num {
+        flex-shrink: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: var(--ink);
+        font-size: 0.7rem;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .heli-cat-title {
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      /* Heliport sub-group */
+      .heli-port {
+        margin-bottom: 22px;
+      }
+
+      .heli-port-label {
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.44);
+        margin-bottom: 10px;
+      }
+
+      /* Individual tour row */
+      .heli-tour {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        padding: 14px 16px;
+        margin-bottom: 8px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px 16px;
+        align-items: start;
+      }
+
+      .heli-tour-name {
+        color: #ffffff;
+        font-size: 0.88rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .heli-tour-duration {
+        display: inline-block;
+        padding: 2px 8px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 20px;
+        color: rgba(255,255,255,0.6);
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        margin-top: 2px;
+      }
+
+      .heli-tour-highlights {
+        grid-column: 1 / -1;
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.48);
+        margin-bottom: 8px;
+        line-height: 1.5;
+      }
+
+      .heli-price-row {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .heli-price-pill {
+        display: inline-flex;
+        flex-direction: column;
+        padding: 7px 12px;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 8px;
+        gap: 2px;
+      }
+
+      .heli-price-pill-label {
+        font-size: 0.58rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .heli-price-pill-value {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #ffffff;
+        white-space: nowrap;
+      }
+
+      /* Bottom CTA in modal */
+      .heli-modal-footer {
+        flex-shrink: 0;
+        padding: 18px 32px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .heli-modal-footer p {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.75rem;
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .heli-modal-cta {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        background: var(--accent);
+        color: var(--ink);
+        border-radius: var(--radius);
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: opacity 180ms ease;
+        white-space: nowrap;
+      }
+
+      .heli-modal-cta:hover { opacity: 0.85; }
+
+      @media (max-width: 600px) {
+        .heli-modal-hero { height: 160px; }
+        .heli-modal-hero-content,
+        .heli-modal-body,
+        .heli-modal-footer { padding-left: 18px; padding-right: 18px; }
+        .heli-modal-footer { flex-direction: column; align-items: flex-start; }
+        .heli-tour { grid-template-columns: 1fr; }
+        .heli-tour-duration { margin-bottom: 4px; }
+      }
+
+      /* ── Concierge Hero ───────────────────────────────────── */
+
+      .concierge-hero {
+        background: var(--ink);
+        padding: clamp(52px, 7vw, 96px) clamp(18px, 6vw, 80px) clamp(40px, 5vw, 72px);
+        text-align: center;
+      }
+
+      .concierge-hero-eyebrow {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: var(--accent);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .concierge-hero h1 {
+        color: #ffffff;
+        margin-bottom: 18px;
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        line-height: 1.05;
+      }
+
+      .concierge-hero-sub {
+        max-width: 580px;
+        margin-inline: auto;
+        color: rgba(255, 255, 255, 0.66);
+        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+        line-height: 1.6;
+      }
+
+      /* 4-card quick-jump grid */
+      .concierge-jump-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        height: clamp(260px, 34vw, 460px);
+      }
+
+      .concierge-jump-card {
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        display: block;
+      }
+
+      .concierge-jump-card img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        filter: brightness(0.55);
+      }
+
+      .concierge-jump-card:hover img {
+        transform: scale(1.07);
+        filter: brightness(0.35);
+      }
+
+      .concierge-jump-card-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: clamp(20px, 3vw, 36px);
+        background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 60%);
+        transition: background 300ms ease;
+      }
+
+      .concierge-jump-card:hover .concierge-jump-card-content {
+        background: linear-gradient(to top, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.2) 60%);
+      }
+
+      .concierge-jump-card-label {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: var(--accent);
+        font-size: 0.62rem;
+        font-weight: 900;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 260ms ease, transform 260ms ease;
+      }
+
+      .concierge-jump-card:hover .concierge-jump-card-label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .concierge-jump-card-title {
+        color: #ffffff;
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 900;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        line-height: 1.15;
+        margin-bottom: 14px;
+      }
+
+      .concierge-jump-card-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 40px;
+        padding: 8px 18px;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.32);
+        border-radius: var(--radius);
+        color: #ffffff;
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        backdrop-filter: blur(6px);
+        transform: translateY(6px);
+        opacity: 0;
+        transition: opacity 280ms ease 40ms, transform 280ms ease 40ms, background 180ms ease;
+      }
+
+      .concierge-jump-card:hover .concierge-jump-card-btn {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .concierge-jump-card-btn svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      /* Divider between cards */
+      .concierge-jump-card + .concierge-jump-card {
+        border-left: 1px solid rgba(255,255,255,0.12);
+      }
+
+      @media (max-width: 768px) {
+        .concierge-jump-grid {
+          grid-template-columns: repeat(2, 1fr);
+          height: auto;
+        }
+
+        .concierge-jump-card {
+          height: clamp(180px, 40vw, 260px);
+        }
+
+        .concierge-jump-card + .concierge-jump-card {
+          border-left: none;
+        }
+
+        .concierge-jump-card:nth-child(odd) {
+          border-right: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .concierge-jump-card:nth-child(3),
+        .concierge-jump-card:nth-child(4) {
+          border-top: 1px solid rgba(255,255,255,0.12);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .concierge-jump-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      /* No header — page starts at top */
+      body {
+        padding-top: 0;
+      }
+
+      /* Category anchor jump nav */
+      .upsell-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        justify-content: center;
+        background: var(--ink);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+
+      .upsell-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 52px;
+        padding: 0 clamp(16px, 2.5vw, 34px);
+        background: transparent;
+        border: 0;
+        border-right: 1px solid rgba(255,255,255,0.1);
+        color: rgba(255,255,255,0.72);
+        font-size: 0.68rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        transition: background 180ms ease, color 180ms ease;
+        white-space: nowrap;
+      }
+
+      .upsell-nav a:last-child {
+        border-right: 0;
+      }
+
+      .upsell-nav a:hover {
+        background: rgba(255,255,255,0.08);
+        color: #ffffff;
+      }
+
+      /* ── Category header banner ──────────────────────────────── */
+      .upsell-category-section {
+        scroll-margin-top: 52px;
+      }
+
+      .upsell-category-banner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 28px;
+        max-width: var(--wide);
+        margin-inline: auto;
+        padding-bottom: clamp(28px, 4vw, 52px);
+        border-bottom: 1px solid var(--line);
+        margin-bottom: clamp(32px, 4vw, 52px);
+      }
+
+      .upsell-category-banner-label {
+        display: inline-block;
+        margin-bottom: 12px;
+        color: var(--accent);
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .upsell-category-banner h2 {
+        margin-bottom: 0;
+      }
+
+      .upsell-category-banner .text-link {
+        margin-top: 0;
+        flex-shrink: 0;
+        align-self: end;
+      }
+
+      /* Dark category: banner on dark bg */
+      .upsell-dark-section .upsell-category-banner {
+        border-bottom-color: rgba(255,255,255,0.14);
+      }
+
+      .upsell-dark-section .upsell-category-banner h2 {
+        color: #ffffff;
+      }
+
+      .upsell-dark-section .upsell-category-banner .text-link {
+        color: rgba(255,255,255,0.8);
+        border-bottom-color: rgba(255,255,255,0.4);
+      }
+
+      /* Card grid — 3 cols desktop, 2 tablet, 1 mobile */
+      .upsell-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        max-width: var(--wide);
+        margin-inline: auto;
+      }
+
+      /* Individual upsell card */
+      .upsell-card {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        overflow: hidden;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.07);
+        transition: box-shadow 220ms ease, transform 220ms ease;
+      }
+
+      .upsell-card:hover {
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.13);
+        transform: translateY(-3px);
+      }
+
+      /* Dark section: cards stay white for contrast */
+      .upsell-dark-section .upsell-card {
+        border-color: rgba(255,255,255,0.08);
+        box-shadow: 0 16px 44px rgba(0,0,0,0.28);
+      }
+
+      .upsell-card-img {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: var(--stone);
+        flex-shrink: 0;
+      }
+
+      .upsell-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 280ms ease;
+      }
+
+      .upsell-card:hover .upsell-card-img img {
+        transform: scale(1.04);
+      }
+
+      .upsell-card-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 5px 12px;
+        background: rgba(5, 5, 5, 0.54);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 0.64rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+      }
+
+      .upsell-card-body {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 10px;
+        padding: clamp(20px, 2.8vw, 30px);
+      }
+
+      .upsell-card-title {
+        margin: 0;
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        line-height: 1.15;
+      }
+
+      .upsell-card-price {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .upsell-card-price span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 4px 10px;
+        background: rgba(39, 211, 107, 0.1);
+        border: 1px solid rgba(39, 211, 107, 0.3);
+        border-radius: 6px;
+        color: #146c38;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .upsell-card-desc {
+        margin: 0;
+        color: rgba(5, 5, 5, 0.66);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .upsell-card-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 12px 18px;
+        margin-top: 6px;
+        background: var(--ink);
+        border: 0;
+        border-radius: var(--radius);
+        color: #ffffff;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 180ms ease, transform 180ms ease;
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .upsell-card-cta:hover {
+        background: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      /* Price table inside transport card */
+      .upsell-price-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.78rem;
+        margin-top: 4px;
+      }
+
+      .upsell-price-table th {
+        padding: 6px 8px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        color: rgba(5, 5, 5, 0.6);
+        font-size: 0.66rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-align: left;
+        text-transform: uppercase;
+      }
+
+      .upsell-price-table td {
+        padding: 7px 8px;
+        border: 1px solid var(--line);
+        color: rgba(5, 5, 5, 0.78);
+        vertical-align: middle;
+      }
+
+      .upsell-price-table tbody tr:nth-child(even) td {
+        background: rgba(5, 5, 5, 0.025);
+      }
+
+      /* CTA bottom strip */
+      .upsell-cta-strip {
+        display: grid;
+        place-items: center;
+        gap: 24px;
+        text-align: center;
+        background: #ffffff;
+        color: var(--ink);
+      }
+
+      .upsell-cta-strip .eyebrow {
+        color: rgba(5, 5, 5, 0.7);
+      }
+
+      .upsell-cta-strip h2 {
+        color: var(--ink);
+      }
+
+      .upsell-cta-strip p {
+        max-width: 640px;
+        color: rgba(5, 5, 5, 0.76);
+        font-size: clamp(1rem, 1.4vw, 1.16rem);
+      }
+
+      .upsell-cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .upsell-cta-actions .button {
+        width: auto;
+        min-width: 220px;
+      }
+
+      .button-secondary {
+        background: rgba(5, 5, 5, 0.05);
+        border: 1px solid rgba(5, 5, 5, 0.18);
+        color: var(--ink);
+        margin-top: 14px;
+      }
+
+      .button-secondary:hover {
+        background: rgba(5, 5, 5, 0.1);
+      }
+
+      /* Transport wide card */
+      .upsell-card-wide {
+        grid-column: span 3;
+        grid-template-rows: auto;
+        grid-template-columns: minmax(240px, 0.6fr) minmax(0, 1fr);
+      }
+
+      .upsell-card-wide .upsell-card-img {
+        aspect-ratio: auto;
+        min-height: 240px;
+      }
+
+      .upsell-card-wide .upsell-card-body {
+        grid-template-rows: auto auto 1fr auto;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .upsell-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .upsell-card-wide {
+          grid-column: span 2;
+          grid-template-columns: 1fr;
+        }
+
+        .upsell-card-wide .upsell-card-img {
+          aspect-ratio: 16 / 10;
+        }
+
+        .upsell-category-banner {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .upsell-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .upsell-card-wide {
+          grid-column: span 1;
+        }
+
+        .upsell-nav a {
+          font-size: 0.62rem;
+          padding: 0 clamp(10px, 3vw, 20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+
+    <main>
+      <!-- ── Concierge Hero Banner ─────────────────────────────── -->
+      <section class="concierge-hero" aria-label="Guest experience introduction">
+        <span class="concierge-hero-eyebrow">Exclusive for guests</span>
+        <h1>How can we elevate<br>your <span class="editorial-word">stay</span> today?</h1>
+        <p class="concierge-hero-sub">
+          Browse our private collection of curated experiences — arranged seamlessly by your concierge.
+        </p>
+      </section>
+
+      <!-- ── 4-Card Quick Jump Grid ─────────────────────────────── -->
+      <div class="concierge-jump-grid" aria-label="Browse by category">
+
+        <!-- Ocean & Adventure -->
+        <a class="concierge-jump-card" href="#ocean-adventure" id="jump-ocean">
+          <img src="assets/services-motorboat-header.jpg" alt="Ocean and adventure experiences" loading="eager" />
+          <div class="concierge-jump-card-content">
+            <span class="concierge-jump-card-label">Explore</span>
+            <p class="concierge-jump-card-title">Explore<br>the Ocean</p>
+            <span class="concierge-jump-card-btn">
+              Discover
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- In-Villa Dining -->
+        <a class="concierge-jump-card" href="#invilla-dining" id="jump-dining">
+          <img src="assets/villa-dining.jpeg" alt="In-villa private dining experiences" loading="eager" />
+          <div class="concierge-jump-card-content">
+            <span class="concierge-jump-card-label">Indulge</span>
+            <p class="concierge-jump-card-title">Dine<br>in the Villa</p>
+            <span class="concierge-jump-card-btn">
+              Discover
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Wellness -->
+        <a class="concierge-jump-card" href="#wellness-culture" id="jump-wellness">
+          <img src="assets/services-yogaaddress.avif" alt="Wellness and spa experiences" loading="eager" />
+          <div class="concierge-jump-card-content">
+            <span class="concierge-jump-card-label">Restore</span>
+            <p class="concierge-jump-card-title">Focus on<br>Wellness</p>
+            <span class="concierge-jump-card-btn">
+              Discover
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+
+        <!-- Transport -->
+        <a class="concierge-jump-card" href="#transport" id="jump-transport">
+          <img src="assets/services-helicopter-hero-generated.png" alt="Private transport and transfers" loading="eager" />
+          <div class="concierge-jump-card-content">
+            <span class="concierge-jump-card-label">Arrive</span>
+            <p class="concierge-jump-card-title">Arrange<br>Transport</p>
+            <span class="concierge-jump-card-btn">
+              Discover
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- ── Sticky category nav ────────────────────────────────── -->
+      <nav class="upsell-nav" aria-label="Experience categories">
+        <a href="#ocean-adventure">Ocean &amp; Adventure</a>
+        <a href="#invilla-dining">In-Villa Dining</a>
+        <a href="#wellness-culture">Vitality &amp; Restoration</a>
+        <a href="#transport">Transport</a>
+        <a href="#spiritual-wellness">Spiritual Wellness</a>
+      </nav>
+
+      <!-- ══════════════════════════════════════════════════════════
+           CATEGORY 1 — OCEAN & ADVENTURE
+      ═══════════════════════════════════════════════════════════ -->
+      <section
+        id="ocean-adventure"
+        class="upsell-category-section section-pad"
+        aria-label="Ocean and adventure experiences"
+      >
+        <div class="upsell-category-banner">
+          <div>
+            <span class="upsell-category-banner-label">01 / 05 &mdash; Ocean &amp; Adventure</span>
+            <h2>Take It <span class="editorial-word">Beyond</span> The Villa</h2>
+          </div>
+          <a class="text-link" href="contact-concierge.html">Contact concierge</a>
+        </div>
+
+        <div class="upsell-grid">
+
+          <!-- Fishing – Sweet Stanly -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-fishing-trip-generated-v2.png"
+                alt="Private boat fishing trip in Bali"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Private boat</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Private Boat Fishing Trip</h3>
+              <div class="upsell-card-price">
+                <span>Full Day (8h) — IDR 16,740,000</span>
+                <span>Half Day (4h) — IDR 13,050,000</span>
+              </div>
+              <p class="upsell-card-desc">
+                Private cruise from Tanjung Benoa aboard Sweet Stanly (Boat 250). Up to 8 guests. Includes fishing
+                equipment &amp; baits, snorkeling gear on request, lunch box, soft drinks, and mineral water.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="https://www.ticketboat.id/en/tour/petualangan-memancing-privat-dari-nusa-dua/2601R6BDV/"
+                target="_blank"
+                rel="noreferrer"
+                id="cta-fishing-sweetstanly"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Private Boat Charter – MISSION -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-motorboat-header.jpg"
+                alt="MISSION private speedboat charter"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Up to 6 guests</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Private Boat Charter — MISSION</h3>
+              <div class="upsell-card-price">
+                <span>Full Day Tour — IDR 20,000,000 / $1,200</span>
+                <span>Sunset Cruise — IDR 6,500,000 / $400</span>
+              </div>
+              <p class="upsell-card-desc">
+                Luxury speedboat experience visiting Nusa Penida &amp; Nusa Lembongan. Full day includes fuel, 2 crew,
+                towels, cooler box, drinks, sound system, snorkeling gear, and USB chargers.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="https://wa.me/message/concierge"
+                id="cta-boat-charter-mission"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Nusa Penida Diving Package -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-diving-trip-generated.png"
+                alt="Diving trip in Nusa Penida"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Min 2 pax</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Nusa Penida Diving Package</h3>
+              <div class="upsell-card-price">
+                <span>Certified — IDR 2,390,000 / pax</span>
+                <span>Non-certified — IDR 2,630,000 / pax</span>
+              </div>
+              <p class="upsell-card-desc">
+                Full roundtrip day trip from Bali to Nusa Penida. Includes private hotel transfers, Sanur harbour
+                transfer, roundtrip public fast boat, and all diving equipment.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-diving-nusapenida"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Traditional Fishing Trip -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-fishing-trip-generated.png"
+                alt="Traditional Balinese Fishing Trip"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Traditional Jukung</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Fishing trip</h3>
+              <div class="upsell-card-price">
+                <span>Price on request</span>
+              </div>
+              <p class="upsell-card-desc">
+                Set sail in a traditional Balinese fishing boat, locally known as a "Jukung," equipped with all the gear to reel in Mahi-Mahi, Tuna, Snapper, and Barracuda. Enjoy a magical sunset backdrop with included local expert guide, fishing gear, scenic stops, and sunset refreshments.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-fishing-traditional"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Surfing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-surf-lessons-generated-1.png"
+                alt="Surfing lessons near Bingin Beach Uluwatu"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">All levels</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Surfing Lessons &amp; Guiding</h3>
+              <div class="upsell-card-price">
+                <span>IDR 500,000 / board &amp; rash guard</span>
+              </div>
+              <p class="upsell-card-desc">
+                Surf Bingin, Padang Padang, Dreamland, Balangan, and Uluwatu with coach Miro. Beginner to advanced.
+                Surfboard and rash guard rental included.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="https://wa.me/628155644834"
+                target="_blank"
+                rel="noreferrer"
+                id="cta-surfing-miro"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           CATEGORY 2 — IN-VILLA DINING
+      ═══════════════════════════════════════════════════════════ -->
+      <section
+        id="invilla-dining"
+        class="upsell-category-section section-pad upsell-dark-section"
+        style="background: var(--ink);"
+        aria-label="In-villa dining experiences"
+      >
+        <div class="upsell-category-banner">
+          <div>
+            <span class="upsell-category-banner-label">02 / 05 &mdash; In-Villa Dining</span>
+            <h2>Meals Made For <span class="editorial-word">Memory</span></h2>
+          </div>
+          <a class="text-link" href="contact-concierge.html">Contact concierge</a>
+        </div>
+
+        <div class="upsell-grid">
+
+          <!-- Balinese Evening -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-bali-adventures-generated.png"
+                alt="Traditional Balinese dance and feast evening"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Cultural dinner</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">A Balinese Evening</h3>
+              <div class="upsell-card-price">
+                <span>IDR 250,000 / PP ++</span>
+              </div>
+              <p class="upsell-card-desc">
+                Authentic Balinese cultural evening with traditional dance performances and a feast — Lawar Bali,
+                Beef Rendang, Chicken Saté, Yellow Rice, Mie Goreng, Balinese vegetable curry, and traditional desserts.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-balinese-evening"
+              >Request Booking</a>
+            </div>
+          </article>
+
+          <!-- Mexican Night -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/mexican_night_generated.png"
+                alt="Vibrant Mexican night dining experience at the villa"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Sharing feast</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Mexican Night</h3>
+              <div class="upsell-card-price">
+                <span>IDR 250,000 / PP ++</span>
+              </div>
+              <p class="upsell-card-desc">
+                Vibrant Mexican-inspired dining featuring fresh nachos, ceviche, salads, tacos, and fruit platters.
+                Great for sharing with family and friends in a fun, casual setting at the villa.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-mexican-night"
+              >Request Booking</a>
+            </div>
+          </article>
+
+          <!-- Daily Breakfast -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/villa-dining.jpeg"
+                alt="Daily Breakfast at Address Bali Villa"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">07:00 - 12:00</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Daily Breakfast</h3>
+              <div class="upsell-card-price">
+                <span>IDR 150,000 / PP ++</span>
+              </div>
+              <p class="upsell-card-desc">
+                <strong>Includes:</strong> Eggs your way, toasted sourdough, avocado, fruit salad, fresh green salad, coconut yoghurt, homemade granola, croissants and jam, pancakes, grilled chicken or bacon, coffee/tea, and juice.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-daily-breakfast"
+              >Request Booking</a>
+            </div>
+          </article>
+
+          <!-- Grazing Platters -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="https://a0.muscache.com/im/pictures/hosting/Hosting-51414187/original/7811e2ea-46fe-493d-afa1-cf068cdcc841.jpeg"
+                alt="Beautifully curated grazing platter at Address Bali Villa"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Order by group size</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Grazing Platters</h3>
+              <div class="upsell-card-price">
+                <span>2 pax — IDR 500,000</span>
+                <span>4–5 pax — IDR 1,000,000</span>
+                <span>8–10 pax — IDR 2,000,000</span>
+              </div>
+              <p class="upsell-card-desc">
+                Cheeses, dips, antipasto, breads, crackers, seasonal fruits, vegetables, nuts, and hand-carved fruit
+                displays. Vegan and gluten-free options available. Deli meats on request.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-grazing-platter"
+              >Request Booking</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           CATEGORY 3 — VITALITY & RESTORATION
+      ═══════════════════════════════════════════════════════════ -->
+      <section
+        id="wellness-culture"
+        class="upsell-category-section section-pad muted-section"
+        aria-label="Vitality and restoration experiences"
+      >
+        <div class="upsell-category-banner">
+          <div>
+            <span class="upsell-category-banner-label">03 / 05 &mdash; Vitality &amp; Restoration</span>
+            <h2>Vitality &amp; <span class="editorial-word">Restoration</span></h2>
+          </div>
+          <a class="text-link" href="contact-concierge.html">Contact concierge</a>
+        </div>
+
+        <div class="upsell-grid">
+
+          <!-- Massage -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-spa-treatments-generated.png"
+                alt="In-villa massage treatment at Address Bali"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Comes to the villa</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">In-Villa Massage</h3>
+              <div class="upsell-card-price">
+                <span>30 min — IDR 150,000</span>
+                <span>1 hour — IDR 200,000</span>
+                <span>1.5 hours — IDR 270,000</span>
+              </div>
+              <p class="upsell-card-desc">
+                Masseur Jasmin comes directly to the villa. Choose from Balinese massage, deep tissue, relaxation,
+                or recovery treatments. Book as a couple or for the whole group.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="https://wa.me/6281239042256"
+                target="_blank"
+                rel="noreferrer"
+                id="cta-massage-jasmin"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Yoga -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-yogaaddress.avif"
+                alt="Private yoga sessions at Address Bali Villa"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">All levels</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Private Yoga Sessions</h3>
+              <div class="upsell-card-price">
+                <span>IDR 400,000 / 5 pax</span>
+                <span>+ IDR 60,000 / extra person</span>
+              </div>
+              <p class="upsell-card-desc">
+                Private and group sessions for all levels. Tailored to relaxation, flexibility, strength, or
+                mindfulness. Sessions can be held poolside or at the villa with teacher Ana.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="https://wa.me/6285963165834"
+                target="_blank"
+                rel="noreferrer"
+                id="cta-yoga-ana"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Balinese Blessing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-bali-adventures-generated.png"
+                alt="Traditional Balinese blessing and cleansing ceremony"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Traditional ritual</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Traditional Balinese Blessing</h3>
+              <div class="upsell-card-price">
+                <span>Price depends on ceremony</span>
+              </div>
+              <p class="upsell-card-desc">
+                A traditional blessing and cleansing ceremony with Auntie — designed to promote positive energy,
+                spiritual balance, and aura opening. Ceremonies are personalised to your intentions.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="https://wa.me/6287862141231"
+                target="_blank"
+                rel="noreferrer"
+                id="cta-blessing-auntie"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Taichi -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/taichi_1780024469346.png"
+                alt="Taichi"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Taichi</h3>
+              <div class="upsell-card-price">
+                <span>60 Min Session</span>
+              </div>
+              <p class="upsell-card-desc">
+                Embrace harmony and balance with a guided 60-minute Tai Chi session. Involves slow, continuous movements and deep breathing to enhance physical health and inner peace.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Qi Gong -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-yogaaddress.avif"
+                alt="Qi Gong"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Qi Gong</h3>
+              <div class="upsell-card-price">
+                <span>60 Min Session</span>
+              </div>
+              <p class="upsell-card-desc">
+                Awaken your vital energy through a 60-minute Qi Gong practice. Combines coordinated postures, movement, and mindful meditation to clear energy blockages and reduce stress.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Personal Trainer -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-yogaaddress.avif"
+                alt="Personal Trainer"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Custom</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Personal Trainer</h3>
+              <div class="upsell-card-price">
+                <span>By Request</span>
+              </div>
+              <p class="upsell-card-desc">
+                Stay active and maintain your fitness goals with a dedicated personal trainer. Enjoy a customized workout session right at your villa, tailored to your fitness level.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           CATEGORY 4 — TRANSPORT
+      ═══════════════════════════════════════════════════════════ -->
+      <section
+        id="transport"
+        class="upsell-category-section section-pad upsell-dark-section"
+        style="background: var(--ink);"
+        aria-label="Transport and getting around"
+      >
+        <div class="upsell-category-banner">
+          <div>
+            <span class="upsell-category-banner-label">04 / 05 &mdash; Transport &amp; Getting Around</span>
+            <h2>Get There In <span class="editorial-word">Style</span></h2>
+          </div>
+          <a class="text-link" href="contact-concierge.html">Contact concierge</a>
+        </div>
+
+        <div class="upsell-grid">
+
+          <!-- Helicopter -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-helicopter-ride-generated.png"
+                alt="Private helicopter experience over Uluwatu"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Romantic &amp; special occasion</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Private Helicopter Experience</h3>
+              <div class="upsell-card-price">
+                <span>From IDR 2,388,000 / person</span>
+              </div>
+              <p class="upsell-card-desc">
+                Experience Bali from the sky — aerial views of Uluwatu cliffs, pristine beaches, the Indian Ocean, and
+                vibrant coral reefs. Perfect for romantic moments, celebrations, or unforgettable adventures.
+              </p>
+              <button
+                class="upsell-card-cta"
+                id="cta-helicopter"
+                onclick="document.getElementById('heli-modal').classList.add('is-open'); document.body.style.overflow='hidden';"
+                style="cursor:pointer; border:none; width:100%; text-align:center;"
+              >View All Tours &amp; Prices</button>
+            </div>
+          </article>
+
+          <!-- Golf Cart -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/golf_cart_driver_generated.png"
+                alt="Golf cart transport around the local area"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Local trips</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Golf Cart + Driver</h3>
+              <div class="upsell-card-price">
+                <span>Max 10 km one way — IDR 1,000,000</span>
+                <span>Overtime / hour — IDR 200,000–400,000</span>
+              </div>
+              <p class="upsell-card-desc">
+                Comfortable and convenient golf cart transport with driver included. Ideal for short local trips around
+                the Uluwatu area — perfect for reaching nearby beaches, restaurants, or surf spots.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-golf-cart"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Motorcycle Rental -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/motorcycle_rental_generated.png"
+                alt="Motorcycle rental for exploring Uluwatu and Bali"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Self-guided</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Motorcycle Rental</h3>
+              <div class="upsell-card-price">
+                <span>IDR 180,000 / day</span>
+              </div>
+              <p class="upsell-card-desc">
+                Explore Uluwatu and the surrounding Bukit peninsula at your own pace with a daily motorcycle rental.
+                Ideal for solo travellers or couples wanting freedom to discover hidden spots.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-motorcycle"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Private Driver – Avanza / APV -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/private_driver_generated.png"
+                alt="Private driver and vehicle for airport transfers and sightseeing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Avanza / APV</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Private Driver + Vehicle</h3>
+              <div class="upsell-card-price">
+                <span>Half day (4h) — IDR 1,600,000–2,300,000</span>
+                <span>Full day (8h) — IDR 2,000,000–3,000,000</span>
+                <span>Full day (10h) — IDR 2,400,000–3,400,000</span>
+              </div>
+              <p class="upsell-card-desc">
+                Comfortable Avanza or APV with professional driver. Airport transfers, sightseeing, beach trips,
+                shopping, restaurants — explore Bali fully at your own pace.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-driver-avanza"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Premium Driver – Fortuner / Alphard wide card with price table -->
+          <article class="upsell-card upsell-card-wide">
+            <div class="upsell-card-img">
+              <img
+                src="assets/services-airport-transfers-generated.png"
+                alt="Premium private driver service with Toyota Fortuner and Alphard"
+                loading="lazy"
+              />
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Premium Private Driver Service</h3>
+              <div class="upsell-card-price">
+                <span>Toyota Fortuner &amp; Toyota Alphard</span>
+                <span>IDR 150,000 – 2,200,000 depending on destination</span>
+              </div>
+              <p class="upsell-card-desc">
+                Professional chauffeur service covering all of Bali — airport, beach clubs, restaurants, and
+                long-distance trips. Select destination pricing below.
+              </p>
+              <table class="upsell-price-table" aria-label="Transportation price list">
+                <thead>
+                  <tr>
+                    <th>Destination</th>
+                    <th>Fortuner</th>
+                    <th>Alphard</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Airport ↔ Bingin</td><td>IDR 600K</td><td>IDR 700K</td></tr>
+                  <tr><td>Uluwatu Beach</td><td>IDR 350K</td><td>IDR 400K</td></tr>
+                  <tr><td>Padang Padang</td><td>IDR 300K</td><td>IDR 350K</td></tr>
+                  <tr><td>Dreamland</td><td>IDR 300K</td><td>IDR 350K</td></tr>
+                  <tr><td>El Kabron</td><td>IDR 300K</td><td>IDR 400K</td></tr>
+                  <tr><td>Ayana / Rock Bar</td><td>IDR 350K</td><td>IDR 475K</td></tr>
+                  <tr><td>Jimbaran</td><td>IDR 350K</td><td>IDR 450K</td></tr>
+                  <tr><td>Seminyak</td><td>IDR 700K</td><td>IDR 900K</td></tr>
+                  <tr><td>Canggu</td><td>IDR 800K</td><td>IDR 1,000K</td></tr>
+                  <tr><td>Sanur</td><td>IDR 600K</td><td>IDR 700K</td></tr>
+                  <tr><td>Ubud Center</td><td>IDR 1,000K</td><td>IDR 1,200K</td></tr>
+                  <tr><td>Amed</td><td>IDR 1,350K</td><td>IDR 1,700K</td></tr>
+                  <tr><td>Lovina</td><td>IDR 1,550K</td><td>IDR 2,200K</td></tr>
+                  <tr><td>Half Day Tour (4h)</td><td>IDR 1,750K</td><td>IDR 2,300K</td></tr>
+                  <tr><td>Full Day Tour (8h)</td><td>IDR 2,300K</td><td>IDR 3,000K</td></tr>
+                  <tr><td>Full Day Tour (10h)</td><td>IDR 2,500K</td><td>IDR 3,400K</td></tr>
+                  <tr><td>Overtime / hour</td><td>IDR 350K</td><td>IDR 400K</td></tr>
+                </tbody>
+              </table>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+                id="cta-driver-premium"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════════════════
+           CATEGORY 5 — SPIRITUAL WELLNESS PROGRAMS
+      ═══════════════════════════════════════════════════════════ -->
+      <section
+        id="spiritual-wellness"
+        class="upsell-category-section section-pad muted-section"
+        aria-label="Spiritual Wellness Programs"
+      >
+        <div class="upsell-category-banner">
+          <div>
+            <span class="upsell-category-banner-label">05 / 05 &mdash; Spiritual Wellness</span>
+            <h2>Discover Inner <span class="editorial-word">Peace</span></h2>
+          </div>
+          <a class="text-link" href="contact-concierge.html">Contact concierge</a>
+        </div>
+
+        <div class="upsell-grid">
+
+          <!-- Palmistry -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/palmistry_reading_1780024215540.png"
+                alt="Palm reading"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">15 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Palmistry / Palm Reading</h3>
+              <div class="upsell-card-price">
+                <span>IDR 600.000 / person</span>
+              </div>
+              <p class="upsell-card-desc">
+                Palm reading, otherwise known as palmistry or chiromancy, learn from translated Dutch book "De javaanschee geestenwereld". Evaluate a person's character or future by studying the palm of their hands.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Tarot -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/tarot_reading_1780024235460.png"
+                alt="Tarot reading"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">15 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Tarot Reading</h3>
+              <div class="upsell-card-price">
+                <span>IDR 600.000 / person</span>
+              </div>
+              <p class="upsell-card-desc">
+                Tarot is the storybook of our life, the mirror to our soul, and the key to our inner wisdom. Tap into the wisdom and answers that live in us all and see the exact lessons we need to learn.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Hypnotherapy -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/hypnotherapy_1780024255976.png"
+                alt="Hypnotherapy"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Hypnotherapy</h3>
+              <div class="upsell-card-price">
+                <span>IDR 700.000 / person</span>
+                <span>+ IDR 350.000 extra person</span>
+              </div>
+              <p class="upsell-card-desc">
+                Hypnotherapy uses guided relaxation, intense concentration and focused attention to achieve a heightened state of awareness, helping focus attention on specific thoughts or tasks.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Chakra Balancing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/chakra_healing_1780024282239.png"
+                alt="Chakra Balancing Healing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Holistic Treatment</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Chakra Balancing Healing</h3>
+              <div class="upsell-card-price">
+                <span>IDR 700.000 / person</span>
+              </div>
+              <p class="upsell-card-desc">
+                A systematic holistic treatment adopted from Balinese culture using Crystals, pendulum, Tibetan bowl combined with acupressure meridian points and inner energy treatment.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Reiki Healing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/reiki_healing_1780024298118.png"
+                alt="Reiki Healing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Reiki Healing</h3>
+              <div class="upsell-card-price">
+                <span>IDR 600.000 / person</span>
+                <span>IDR 1.000.000 / couple</span>
+              </div>
+              <p class="upsell-card-desc">
+                Reduces stress and promotes healing by flowing life force energy through the affected parts of the energy field, charging them with positive energy and bringing a sense of peace.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Wariga -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/wariga_analysis_1780024327547.png"
+                alt="Wariga"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Wariga (Birthday Analysis)</h3>
+              <div class="upsell-card-price">
+                <span>IDR 700.000 / person</span>
+                <span>IDR 2.000.000 / 4 persons</span>
+              </div>
+              <p class="upsell-card-desc">
+                Combines palm lines, five elements formulas, handwriting, and numerology to figure out your special talents, potential, successful career paths, strengths, and weaknesses.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Sound Healing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/sound_healing_1780024342511.png"
+                alt="Sound Healing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Sound Healing</h3>
+              <div class="upsell-card-price">
+                <span>IDR 800.000 / person</span>
+                <span>+ IDR 300.000 extra person</span>
+              </div>
+              <p class="upsell-card-desc">
+                Sound vibration stimulates stress relief on all levels, improves concentration, and eases mental or emotional tension (worries, anxiety, depression, insomnia) through cosmic "Ong" vibrations.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Prana Shakti -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/prana_shakti_1780024363758.png"
+                alt="Prana Shakti Healing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Prana Shakti Healing</h3>
+              <div class="upsell-card-price">
+                <span>IDR 600.000 / person</span>
+                <span>IDR 2.000.000 / 5 persons</span>
+              </div>
+              <p class="upsell-card-desc">
+                Prana means "Life Force". Feel and influence the invisible energy that surrounds us, healing energy patterns and promoting physical, mental, and spiritual harmony.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Melukat -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/melukat_blessing_1780024379166.png"
+                alt="Melukat Soul Blessing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Melukat / Soul Blessing</h3>
+              <div class="upsell-card-price">
+                <span>IDR 1.000.000 / person</span>
+                <span>IDR 2.000.000 / 4 persons</span>
+              </div>
+              <p class="upsell-card-desc">
+                Performed by a Hindu priest using holy water (tirta), this ritual is deeply woven into Balinese life. It restores spiritual balance and fosters profound inner peace.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Fire Blessing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/fire_blessing_1780024398376.png"
+                alt="Fire Blessing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Fire Blessing Ritual</h3>
+              <div class="upsell-card-price">
+                <span>IDR 700.000 / person</span>
+                <span>IDR 4.000.000 / 5 persons</span>
+              </div>
+              <p class="upsell-card-desc">
+                An ancient Vedic healing fire ceremony. Involves making offerings of rice into a small fire while chanting specific mantras, timed precisely to sunset for ultimate spiritual alignment.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Master Therapy -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/master_therapy_1780024432701.png"
+                alt="Master Therapy"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">Meridian Healing</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Master Therapy</h3>
+              <div class="upsell-card-price">
+                <span>IDR 900.000 / session</span>
+              </div>
+              <p class="upsell-card-desc">
+                Releases physical problems due to meridian blocks. The healer heals with stretching, acupressure on meridian lines, and spiritual healing. Ideal for low energy and fatigue.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+          <!-- Aura Cleansing -->
+          <article class="upsell-card">
+            <div class="upsell-card-img">
+              <img
+                src="assets/aura_cleansing_1780024448944.png"
+                alt="Aura Cleansing"
+                loading="lazy"
+              />
+              <span class="upsell-card-badge">60 Min</span>
+            </div>
+            <div class="upsell-card-body">
+              <h3 class="upsell-card-title">Aura Cleansing</h3>
+              <div class="upsell-card-price">
+                <span>IDR 700.000 / person</span>
+              </div>
+              <p class="upsell-card-desc">
+                An alternative treatment for face, body, and emotional distress. Combines finger tapping technique (madhu mukha mudra) on the face to create balance, release stress, and bring out a glow.
+              </p>
+              <a
+                class="upsell-card-cta"
+                href="contact-concierge.html"
+              >Request via Concierge</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ── Bottom CTA strip ───────────────────────────────────── -->
+      <section class="upsell-cta-strip section-pad" aria-label="Concierge contact call to action">
+        <p class="eyebrow">Your concierge team</p>
+        <h2>Need Help Choosing? <span class="editorial-word">We're</span> Here</h2>
+        <p>
+          Not sure what to book or want to combine a few experiences into one seamless day? Send the concierge your
+          group size, dates, and what you have in mind — we'll handle the rest.
+        </p>
+        <div class="upsell-cta-actions">
+          <a class="button button-primary" href="https://wa.me/6282229299866" target="_blank" rel="noreferrer" id="cta-bottom-contact">WhatsApp Us</a>
+          <a class="button button-secondary" href="mailto:addressbaliulu@gmail.com" id="cta-bottom-email">Email Us</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ── Helicopter Modal ──────────────────────────────────────── -->
+    <div
+      id="heli-modal"
+      class="heli-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Private Helicopter Experience — Tour Options"
+      onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
+    >
+      <div class="heli-modal">
+
+        <!-- Hero strip -->
+        <div class="heli-modal-hero">
+          <img src="assets/services-helicopter-hero-generated.png" alt="Aerial view over Bali" />
+          <div class="heli-modal-hero-content">
+            <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
+            <h2>Private Helicopter <span class="editorial-word">Experience</span></h2>
+          </div>
+          <button
+            class="heli-modal-close"
+            aria-label="Close"
+            onclick="document.getElementById('heli-modal').classList.remove('is-open'); document.body.style.overflow='';"
+          >&times;</button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="heli-modal-body">
+
+          <!-- ── Category 1: Coastline Tours ── -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-num">1</span>
+              <span class="heli-cat-title">Coastline Helicopter Tours</span>
+            </div>
+
+            <!-- From Nusa Dua -->
+            <div class="heli-port">
+              <p class="heli-port-label">From Nusa Dua Heliport</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Helicopter Thrill Ride</span>
+                <span class="heli-tour-duration">10 min</span>
+                <p class="heli-tour-highlights">GWK &middot; Melasti Beach &middot; Pandawa Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 2,758,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 8,278,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Uluwatu Skyline</span>
+                <span class="heli-tour-duration">15 min</span>
+                <p class="heli-tour-highlights">Helicopter Thrill Ride route &middot; Uluwatu Temple &middot; Nyang-Nyang Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 4,078,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 12,598,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Above the Island of Gods</span>
+                <span class="heli-tour-duration">20 min</span>
+                <p class="heli-tour-highlights">Uluwatu Skyline route &middot; Waterblow &middot; Dreamland Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 5,398,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 17,158,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Canggu &amp; Uluwatu: A Tale of Two Coastlines</span>
+                <span class="heli-tour-duration">40 min</span>
+                <p class="heli-tour-highlights">Island of Gods route &middot; Kuta Beach &middot; Tanah Lot Temple</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 9,598,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 29,998,800</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- From Canggu -->
+            <div class="heli-port">
+              <p class="heli-port-label">From Canggu (Nuanu) Heliport</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Helicopter Thrill Ride</span>
+                <span class="heli-tour-duration">10 min</span>
+                <p class="heli-tour-highlights">Nuanu &middot; Tanah Lot Temple &middot; Pererenan Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 2,388,000</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 8,278,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Canggu Skyline</span>
+                <span class="heli-tour-duration">15 min</span>
+                <p class="heli-tour-highlights">Thrill Ride route &middot; Pererenan Beach &middot; Seminyak Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 4,078,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 12,598,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Canggu &amp; Uluwatu: A Tale of Two Coastlines</span>
+                <span class="heli-tour-duration">35 min</span>
+                <p class="heli-tour-highlights">Island of Gods route &middot; GWK &middot; Melasti Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 8,398,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 26,998,800</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Category 2: Nusa Penida & Mid-Range ── -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-num">2</span>
+              <span class="heli-cat-title">Nusa Penida &amp; Mid-Range Tours</span>
+            </div>
+
+            <!-- From Nusa Dua -->
+            <div class="heli-port">
+              <p class="heli-port-label">From Nusa Dua Heliport</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Nusa Penida Sky Escape</span>
+                <span class="heli-tour-duration">45 min</span>
+                <p class="heli-tour-highlights">Kelingking Beach &middot; Broken Beach &middot; Manta Point</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 10,798,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 33,598,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Four Islands Perfect Tour</span>
+                <span class="heli-tour-duration">55 min</span>
+                <p class="heli-tour-highlights">Nusa Penida Sky Escape route &middot; GWK &middot; Melasti Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 13,198,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 41,758,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Four Islands East to West</span>
+                <span class="heli-tour-duration">65 min</span>
+                <p class="heli-tour-highlights">Four Islands Perfect route &middot; Diamond Beach &middot; Uluwatu Temple</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 15,598,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 50,398,800</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- From Canggu -->
+            <div class="heli-port">
+              <p class="heli-port-label">From Canggu (Nuanu) Heliport</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Volcanoes and Temples</span>
+                <span class="heli-tour-duration">55 min</span>
+                <p class="heli-tour-highlights">Batur Volcano &middot; Jatiluwih Rice Terraces &middot; Tanah Lot Temple</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 13,198,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 41,758,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Nusa Penida Sky Escape</span>
+                <span class="heli-tour-duration">55 min</span>
+                <p class="heli-tour-highlights">Kelingking Beach &middot; Broken Beach &middot; Manta Point</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 13,198,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 41,758,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Four Islands Perfect Tour</span>
+                <span class="heli-tour-duration">65 min</span>
+                <p class="heli-tour-highlights">Nusa Penida Sky Escape route &middot; GWK &middot; Melasti Beach</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 15,598,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 50,398,800</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Category 3: Long-Range, Volcano & Special ── -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-num">3</span>
+              <span class="heli-cat-title">Long-Range, Volcano &amp; Special Tours</span>
+            </div>
+
+            <!-- From Nusa Dua -->
+            <div class="heli-port">
+              <p class="heli-port-label">From Nusa Dua Heliport</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Volcanoes and Temples</span>
+                <span class="heli-tour-duration">75 min</span>
+                <p class="heli-tour-highlights">Batur Volcano &middot; Jatiluwih Rice Terraces &middot; Tanah Lot Temple</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 17,998,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 58,198,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Volcanoes and Islands</span>
+                <span class="heli-tour-duration">85 min</span>
+                <p class="heli-tour-highlights">Batur Volcano &middot; Agung Volcano &middot; Nusa Penida</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 20,398,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 65,998,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">All Bali Tour</span>
+                <span class="heli-tour-duration">100 min</span>
+                <p class="heli-tour-highlights">Canggu &amp; Uluwatu Coastlines &middot; Volcanoes &middot; Nusa Penida</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 25,198,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 77,998,800</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- From Canggu -->
+            <div class="heli-port">
+              <p class="heli-port-label">From Canggu (Nuanu) Heliport</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Volcanoes and Islands</span>
+                <span class="heli-tour-duration">85 min</span>
+                <p class="heli-tour-highlights">Nusa Penida &middot; Batur Volcano &middot; Agung Volcano</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 20,398,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 65,998,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">All Bali Tour</span>
+                <span class="heli-tour-duration">100 min</span>
+                <p class="heli-tour-highlights">Nusa Penida &middot; Volcanoes &middot; Canggu &amp; Uluwatu Coastlines</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 25,198,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 77,998,800</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Ijen Tour</span>
+                <span class="heli-tour-duration">100 min</span>
+                <p class="heli-tour-highlights">Ijen Crater &middot; Menjangan Island &middot; Tanah Lot Temple</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Shared (1 seat)</span><span class="heli-price-pill-value">IDR 25,198,800</span></div>
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Private (up to 4)</span><span class="heli-price-pill-value">IDR 77,998,800</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /heli-modal-body -->
+
+        <!-- Footer CTA -->
+        <div class="heli-modal-footer">
+          <p>All tours depart from Nusa Dua or Canggu heliport.<br>Prices are per booking. Contact concierge to check availability &amp; book.</p>
+          <a
+            class="heli-modal-cta"
+            href="https://wa.me/6282229299866"
+            target="_blank"
+            rel="noreferrer"
+          >Book via WhatsApp</a>
+        </div>
+
+      </div><!-- /heli-modal -->
+    </div><!-- /heli-modal-overlay -->
+
+    <script>
+      /* Close modal on Escape key */
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          var m = document.getElementById('heli-modal');
+          if (m.classList.contains('is-open')) {
+            m.classList.remove('is-open');
+            document.body.style.overflow = '';
+          }
+        }
+      });
+    </script>
+
+    <!-- ── Footer ─────────────────────────────────────────────── -->
+    <footer class="site-footer">
+      <div class="site-footer-shell">
+        <div class="site-footer-top">
+          <a class="brand" href="index.html" aria-label="Address Bali home">
+            <span>AddressBali<sup>&reg;</sup></span>
+          </a>
+          <a
+            class="footer-social-link"
+            href="https://www.instagram.com/addressbali_uluwatu/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Follow Address Bali on Instagram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5"></rect>
+              <circle cx="12" cy="12" r="4.25"></circle>
+              <circle cx="17.5" cy="6.5" r="1"></circle>
+            </svg>
+          </a>
+        </div>
+        <p>Luxury villa stays, retreats, weddings, and concierge experiences in Bingin, Bali.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="villa.html">Villa</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="events-retreats.html">Events</a>
+          <a href="weddings.html">Weddings</a>
+          <a href="retreats.html">Retreats</a>
+          <a href="family-groups.html">Families</a>
+          <a href="large-group-stays.html">Groups</a>
+          <a href="services-experiences.html">Experiences</a>
+          <a href="location.html">Location</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact-concierge.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
