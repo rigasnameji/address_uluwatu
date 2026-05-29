@@ -957,20 +957,18 @@
             <div class="upsell-card-body">
               <h3 class="upsell-card-title">Private Boat Fishing Trip</h3>
               <div class="upsell-card-price">
-                <span>Full Day (8h) — IDR 16,740,000</span>
-                <span>Half Day (4h) — IDR 13,050,000</span>
+                <span>From Rp. 7.500.000 / boat</span>
               </div>
               <p class="upsell-card-desc">
-                Private cruise from Tanjung Benoa aboard Sweet Stanly (Boat 250). Up to 8 guests. Includes fishing
+                Private cruise from Tanjung Benoa aboard Sweet Stanly. Up to 8 guests. Includes fishing
                 equipment &amp; baits, snorkeling gear on request, lunch box, soft drinks, and mineral water.
               </p>
-              <a
+              <button
                 class="upsell-card-cta"
-                href="https://www.ticketboat.id/en/tour/petualangan-memancing-privat-dari-nusa-dua/2601R6BDV/"
-                target="_blank"
-                rel="noreferrer"
                 id="cta-fishing-sweetstanly"
-              >Request via Concierge</a>
+                onclick="document.getElementById('fishing-modal').classList.add('is-open'); document.body.style.overflow='hidden';"
+                style="cursor:pointer; border:none; width:100%; text-align:center;"
+              >View Boat Options &amp; Prices</button>
             </div>
           </article>
 
@@ -2230,13 +2228,153 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           var m = document.getElementById('heli-modal');
-          if (m.classList.contains('is-open')) {
+          var f = document.getElementById('fishing-modal');
+          if (m && m.classList.contains('is-open')) {
             m.classList.remove('is-open');
+            document.body.style.overflow = '';
+          }
+          if (f && f.classList.contains('is-open')) {
+            f.classList.remove('is-open');
             document.body.style.overflow = '';
           }
         }
       });
     </script>
+
+    <!-- ── Fishing Modal ──────────────────────────────────────── -->
+    <div
+      id="fishing-modal"
+      class="heli-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Private Boat Fishing Trip — Options"
+      onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
+    >
+      <div class="heli-modal">
+
+        <!-- Hero strip -->
+        <div class="heli-modal-hero">
+          <img src="assets/services-fishing-trip-generated-v2.png" alt="Private boat fishing" />
+          <div class="heli-modal-hero-content">
+            <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
+            <h2>Private Boat Fishing <span class="editorial-word">Trip</span></h2>
+          </div>
+          <button
+            class="heli-modal-close"
+            aria-label="Close"
+            onclick="document.getElementById('fishing-modal').classList.remove('is-open'); document.body.style.overflow='';"
+          >&times;</button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="heli-modal-body">
+
+          <!-- ── Boat 250 ── -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title">Sweet Stanly with Boat 250</span>
+            </div>
+
+            <div class="heli-port">
+              <p class="heli-port-label">Capacity: 6 - 8 people</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Full-Day Private Trip</span>
+                <span class="heli-tour-duration">8 hours</span>
+                <p class="heli-tour-highlights">Tanjung Benoa to Nusa Penida &middot; Professional Fishing</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Per Boat</span><span class="heli-price-pill-value">Rp. 17.800.000</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Half-Day Private Trip</span>
+                <span class="heli-tour-duration">4 - 5 hours</span>
+                <p class="heli-tour-highlights">Tanjung Benoa to Nusa Dua / Indiana Ocean area &middot; Fishing &amp; Snorkeling</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Per Boat</span><span class="heli-price-pill-value">Rp. 14.000.000</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Boat 200 ── -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title">Sweet Stanly with Boat 200</span>
+            </div>
+
+            <div class="heli-port">
+              <p class="heli-port-label">Capacity: 3 - 5 people</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Full-Day Private Trip</span>
+                <span class="heli-tour-duration">8 hours</span>
+                <p class="heli-tour-highlights">Tanjung Benoa to Nusa Penida &middot; Professional Fishing</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Per Boat</span><span class="heli-price-pill-value">Rp. 9.000.000</span></div>
+                </div>
+              </div>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Half-Day Private Trip</span>
+                <span class="heli-tour-duration">4 - 5 hours</span>
+                <p class="heli-tour-highlights">Tanjung Benoa to Nusa Dua / Indiana Ocean area &middot; Fishing &amp; Snorkeling</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Per Boat</span><span class="heli-price-pill-value">Rp. 8.500.000</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Boat 115 ── -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title">Sweet Stanly with Boat 115</span>
+            </div>
+
+            <div class="heli-port">
+              <p class="heli-port-label">Capacity: 3 - 5 people</p>
+
+              <div class="heli-tour">
+                <span class="heli-tour-name">Half-Day Private Trip</span>
+                <span class="heli-tour-duration">4 - 5 hours</span>
+                <p class="heli-tour-highlights">Tanjung Benoa to Nusa Dua / Indiana Ocean area &middot; Fishing &amp; Snorkeling</p>
+                <div class="heli-price-row">
+                  <div class="heli-price-pill"><span class="heli-price-pill-label">Per Boat</span><span class="heli-price-pill-value">Rp. 7.500.000</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trip details -->
+          <div class="heli-cat">
+            <div class="heli-port">
+              <p class="heli-port-label">Inclusions &amp; Details</p>
+              <p style="color: rgba(255,255,255,0.6); font-size: 0.75rem; line-height: 1.5; margin: 0;">
+                <strong style="color: #fff;">Inclusions:</strong> Fishing equipment, baits, snorkeling equipment (on request), lunch box, soft drinks, and mineral water.<br>
+                <strong style="color: #fff;">Departure:</strong> 7:00 AM - 12:00 PM (half-day) &amp; 6:00 AM - 4:00 PM (full-day).<br>
+                <strong style="color: #fff;">Activities:</strong> Trolling, snorkeling, coral fishing. Target: Snappers, Blue Crevally, Scribbled Filefish, etc.<br>
+                <strong style="color: #fff;">Note:</strong> Advanced local crew guides you professionally. Trips might be changed or rescheduled according to sea conditions for your own safety.
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /heli-modal-body -->
+
+        <!-- Footer CTA -->
+        <div class="heli-modal-footer">
+          <p>Prices are per private boat. Secure your trip and enjoy the ultimate fishing experience in Bali.</p>
+          <a
+            class="heli-modal-cta"
+            href="https://wa.me/6282229299866"
+            target="_blank"
+            rel="noreferrer"
+          >Book via WhatsApp</a>
+        </div>
+
+      </div><!-- /heli-modal -->
+    </div><!-- /fishing-modal-overlay -->
 
     <!-- ── Footer ─────────────────────────────────────────────── -->
     <footer class="site-footer">
