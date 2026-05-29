@@ -957,20 +957,18 @@
             <div class="upsell-card-body">
               <h3 class="upsell-card-title">Private Boat Fishing Trip</h3>
               <div class="upsell-card-price">
-                <span>Full Day (8h) — IDR 16,740,000</span>
-                <span>Half Day (4h) — IDR 13,050,000</span>
+                <span>From Rp. 7.500.000 / boat</span>
               </div>
               <p class="upsell-card-desc">
-                Private cruise from Tanjung Benoa aboard Sweet Stanly (Boat 250). Up to 8 guests. Includes fishing
+                Private cruise from Tanjung Benoa aboard Sweet Stanly. Up to 8 guests. Includes fishing
                 equipment &amp; baits, snorkeling gear on request, lunch box, soft drinks, and mineral water.
               </p>
-              <a
+              <button
                 class="upsell-card-cta"
-                href="https://www.ticketboat.id/en/tour/petualangan-memancing-privat-dari-nusa-dua/2601R6BDV/"
-                target="_blank"
-                rel="noreferrer"
                 id="cta-fishing-sweetstanly"
-              >Request via Concierge</a>
+                onclick="document.getElementById('fishing-modal').classList.add('is-open'); document.body.style.overflow='hidden';"
+                style="cursor:pointer; border:none; width:100%; text-align:center;"
+              >View Boat Options &amp; Prices</button>
             </div>
           </article>
 
@@ -982,23 +980,24 @@
                 alt="MISSION private speedboat charter"
                 loading="lazy"
               />
-              <span class="upsell-card-badge">Up to 6 guests</span>
+              <span class="upsell-card-badge">Up to 12 guests</span>
             </div>
             <div class="upsell-card-body">
-              <h3 class="upsell-card-title">Private Boat Charter — MISSION</h3>
+              <h3 class="upsell-card-title">Private Boat Charter</h3>
               <div class="upsell-card-price">
-                <span>Full Day Tour — IDR 20,000,000 / $1,200</span>
-                <span>Sunset Cruise — IDR 6,500,000 / $400</span>
+                <span>Full Day Cruise &mdash; Rp. 11.800.000</span>
+                <span>Halfday Sunset Cruise &mdash; Rp. 7.500.000</span>
               </div>
               <p class="upsell-card-desc">
-                Luxury speedboat experience visiting Nusa Penida &amp; Nusa Lembongan. Full day includes fuel, 2 crew,
-                towels, cooler box, drinks, sound system, snorkeling gear, and USB chargers.
+                Luxury speedboat experience visiting Nusa Penida. Full day includes captain &amp; crew, fuel,
+                snorkeling gear, fishing tools, insurance, drinks, and more.
               </p>
-              <a
+              <button
                 class="upsell-card-cta"
-                href="https://wa.me/message/concierge"
                 id="cta-boat-charter-mission"
-              >Request via Concierge</a>
+                onclick="document.getElementById('mission-modal').classList.add('is-open'); document.body.style.overflow='hidden';"
+                style="cursor:pointer; border:none; width:100%; text-align:center;"
+              >View Full Details &amp; Prices</button>
             </div>
           </article>
 
@@ -1041,18 +1040,19 @@
               <span class="upsell-card-badge">Traditional Jukung</span>
             </div>
             <div class="upsell-card-body">
-              <h3 class="upsell-card-title">Fishing trip</h3>
+              <h3 class="upsell-card-title">Traditional Fishing Trip</h3>
               <div class="upsell-card-price">
-                <span>Price on request</span>
+                <span>From Rp. 2.100.000 / boat</span>
               </div>
               <p class="upsell-card-desc">
-                Set sail in a traditional Balinese fishing boat, locally known as a "Jukung," equipped with all the gear to reel in Mahi-Mahi, Tuna, Snapper, and Barracuda. Enjoy a magical sunset backdrop with included local expert guide, fishing gear, scenic stops, and sunset refreshments.
+                Set sail in a traditional Balinese jukung. Private trip for up to 4 people. Includes experienced local guide, fishing gear, baits, mineral water, and lunch box.
               </p>
-              <a
+              <button
                 class="upsell-card-cta"
-                href="contact-concierge.html"
                 id="cta-fishing-traditional"
-              >Request via Concierge</a>
+                onclick="document.getElementById('trad-fishing-modal').classList.add('is-open'); document.body.style.overflow='hidden';"
+                style="cursor:pointer; border:none; width:100%; text-align:center;"
+              >View Details &amp; Prices</button>
             </div>
           </article>
 
@@ -1111,7 +1111,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/services-bali-adventures-generated.png"
+                src="assets/balinese_evening_generated.png"
                 alt="Traditional Balinese dance and feast evening"
                 loading="lazy"
               />
@@ -1356,7 +1356,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/services-yogaaddress.avif"
+                src="assets/qigong_practice_generated.png"
                 alt="Qi Gong"
                 loading="lazy"
               />
@@ -1381,7 +1381,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/services-yogaaddress.avif"
+                src="assets/personal_trainer_generated.png"
                 alt="Personal Trainer"
                 loading="lazy"
               />
@@ -1484,7 +1484,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/motorcycle_rental_generated.png"
+                src="assets/nmax_scooter_generated.png"
                 alt="Motorcycle rental for exploring Uluwatu and Bali"
                 loading="lazy"
               />
@@ -1511,7 +1511,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/private_driver_generated.png"
+                src="assets/avanza_driver_generated.png"
                 alt="Private driver and vehicle for airport transfers and sightseeing"
                 loading="lazy"
               />
@@ -2230,13 +2230,715 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           var m = document.getElementById('heli-modal');
-          if (m.classList.contains('is-open')) {
+          var f = document.getElementById('fishing-modal');
+          var ms = document.getElementById('mission-modal');
+          var tf = document.getElementById('trad-fishing-modal');
+          if (m && m.classList.contains('is-open')) {
             m.classList.remove('is-open');
+            document.body.style.overflow = '';
+          }
+          if (f && f.classList.contains('is-open')) {
+            f.classList.remove('is-open');
+            document.body.style.overflow = '';
+          }
+          if (ms && ms.classList.contains('is-open')) {
+            ms.classList.remove('is-open');
+            document.body.style.overflow = '';
+          }
+          if (tf && tf.classList.contains('is-open')) {
+            tf.classList.remove('is-open');
             document.body.style.overflow = '';
           }
         }
       });
     </script>
+
+    <!-- ── Fishing Modal ──────────────────────────────────────── -->
+    <div
+      id="fishing-modal"
+      class="heli-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Private Boat Fishing Trip — Options"
+      onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
+    >
+      <div class="heli-modal">
+
+        <!-- Hero strip -->
+        <div class="heli-modal-hero">
+          <img src="assets/services-fishing-trip-generated-v2.png" alt="Private boat fishing" />
+          <div class="heli-modal-hero-content">
+            <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
+            <h2>Private Boat Fishing <span class="editorial-word">Trip</span></h2>
+          </div>
+          <button
+            class="heli-modal-close"
+            aria-label="Close"
+            onclick="document.getElementById('fishing-modal').classList.remove('is-open'); document.body.style.overflow='';"
+          >&times;</button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="heli-modal-body">
+
+          <!-- Intro paragraph -->
+          <div style="padding: 0 0 32px; color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6;">
+            <p><strong style="color: #fff;">Capacity: Up to 8 People</strong></p>
+            <p style="margin-top: 12px;">It is the time for you to get ready because you are about to join the fantastic fishing trip with us from Tanjung Benoa to Nusa Dua or the Indiana Ocean area for half-day and Tanjung Benoa to Nusa Penida for full-day.</p>
+            <p style="margin-top: 12px;">Don’t miss out the chance by being with yourself! Go ask your friend or family to accompany you along the trip!</p>
+          </div>
+
+          <!-- HIGHLIGHT -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">HIGHLIGHT</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+                <li><strong style="color: #fff;">Suitable Private Boat:</strong> There are three boats in total that you can choose based on your preference</li>
+                <li><strong style="color: #fff;">Various Fishing Techniques:</strong> Try out some fishing techniques like trolling or coral fishing during the trip</li>
+                <li><strong style="color: #fff;">Multiple Water Activities:</strong> Other than fishing, you can also spend your time by snorkeling around the water area</li>
+                <li><strong style="color: #fff;">Advanced Fishing Crew:</strong> Don’t be afraid about the trip since our advanced local crew will guide you professionally</li>
+                <li><strong style="color: #fff;">Fixed Schedule:</strong> No need to think about the itinerary! The boat will take you around the sea at their selected time. You can sit tight and relax during the trip</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- INCLUSION -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">INCLUSION</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+                <li>Fishing Equipments</li>
+                <li>Fishing Baits</li>
+                <li>Snorkeling Equipments (based on request)</li>
+                <li>Lunch Box</li>
+                <li>Soft Drink</li>
+                <li>Mineral Water</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- DETAIL -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">DETAIL</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+                <li><strong style="color: #fff;">Duration:</strong> 4 - 5 hours for half-day and 8 hours for full-day</li>
+                <li><strong style="color: #fff;">Activities:</strong> Trolling, snorkeling, coral fishing</li>
+                <li><strong style="color: #fff;">Departure:</strong> 7 am - 12 pm (half-day) &amp; 6 am - 4 pm (full-day)</li>
+                <li><strong style="color: #fff;">Route:</strong> Tanjung Benoa to Nusa Dua or Indiana Ocean area for half-day and Tanjung Benoa to Nusa Penida for full-day</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NOTICE -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">NOTICE</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+                <li><strong style="color: #fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color: #fff;">Experienced Crew:</strong> The local captain and crew will lead your way professionally</li>
+                <li><strong style="color: #fff;">Various Fishing Targets:</strong> Snappers, Blue Crevally, Scribbled Filefish, etc</li>
+                <li><strong style="color: #fff;">Inclusions:</strong> Fishing equipments, baits, snorkeling equipments, lunch box, soft drink, and mineral water</li>
+                <li><strong style="color: #fff;">Weather Policy:</strong> The trips might be changed or rescheduled according to the sea conditions for your own safety</li>
+                <li><strong style="color: #fff;">Boat Type:</strong> The boat will be using a Suzuki engine. The type will be different for every boat</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Sweet Stanly Full-Day Boat 250 -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Sweet Stanly Full-Day with Boat 250</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 17.800.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Cast your road and bring some fish to the land along with your companion! Enjoy the ride of a full-day fishing experience to the Nusa Penida area! Embark your fishing skills with Sweet Stanly’s professional fishing package to add more fun into your core memories!</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>8 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>6 am - 4 pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activities</strong><br>Jigging, casting/popping, trolling, coral fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Tanjung Benoa to Nusa Penida</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Capacity</strong><br>6-8 people</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Notice</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:2px;">
+                <li><strong style="color:#fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color:#fff;">Experienced Crew:</strong> The local captain and crew will lead your way professionally</li>
+                <li><strong style="color:#fff;">Various Fishing Targets:</strong> Snappers, Blue Crevally, Scribbled Filefish, etc</li>
+                <li><strong style="color:#fff;">Weather Policy:</strong> The trips might be changed or rescheduled according to the sea conditions for your own safety</li>
+                <li><strong style="color:#fff;">Boat Type:</strong> The boat will be using a Suzuki engine. The type will be different for every boat</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Fishing equipments, baits</li>
+                <li>Snorkeling equipments (based on request)</li>
+                <li>Lunch box, soft drink, and mineral water</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Sweet Stanly Half-Day Boat 250 -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Sweet Stanly Half-Day with Boat 250</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 14.000.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Spend your quality time with a larger group of friends or family! Bring them to join the fun with you since this boat is 13 meters long with 4 strokes! More people to add another color? Sure, thing! You are always welcome to bring 8 people as it is the maximum capacity of this boat.</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>4 - 5 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>7 am - 12 pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activities</strong><br>Trolling, snorkeling, coral fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Tanjung Benoa to Nusa Dua or Indiana Ocean area</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Capacity</strong><br>6-8 people</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Notice</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:2px;">
+                <li><strong style="color:#fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color:#fff;">Experienced Crew:</strong> The local captain and crew will lead your way professionally</li>
+                <li><strong style="color:#fff;">Various Fishing Targets:</strong> Snappers, Blue Crevally, Scribbled Filefish, etc</li>
+                <li><strong style="color:#fff;">Weather Policy:</strong> The trips might be changed or rescheduled according to the sea conditions for your own safety</li>
+                <li><strong style="color:#fff;">Boat Type:</strong> The boat will be using a Suzuki engine. The type will be different for every boat</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Fishing equipments, baits</li>
+                <li>Snorkeling equipments (based on request)</li>
+                <li>Lunch box, soft drink, and mineral water</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Sweet Stanly Full-Day Boat 200 -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Sweet Stanly Full-Day with Boat 200</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 9.000.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">If you have an experience in fishing, it is time for you to rise and shine! Ask your small group of friends or family to go with you for a full-day fishing trip to the Nusa Penida area! Show your skills to catch some fishing under the sea while spending your time with the loved ones!</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>8 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>6 am - 4 pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activities</strong><br>Jigging, casting/popping, trolling, coral fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Tanjung Benoa to Nusa Penida</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Capacity</strong><br>3-5 people</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Notice</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:2px;">
+                <li><strong style="color:#fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color:#fff;">Experienced Crew:</strong> The local captain and crew will lead your way professionally</li>
+                <li><strong style="color:#fff;">Various Fishing Targets:</strong> Snappers, Blue Crevally, Scribbled Filefish, etc</li>
+                <li><strong style="color:#fff;">Weather Policy:</strong> The trips might be changed or rescheduled according to the sea conditions for your own safety</li>
+                <li><strong style="color:#fff;">Boat Type:</strong> The boat will be using a Suzuki engine. The type will be different for every boat</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Fishing equipments, baits</li>
+                <li>Snorkeling equipments (based on request)</li>
+                <li>Lunch box, soft drink, and mineral water</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Sweet Stanly Half-Day Boat 200 -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Sweet Stanly Half-Day with Boat 200</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 8.500.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Do you want to have a small group along with you, but you still prefer a larger boat? No worries! We got you! Although the maximum capacity is only up to 5 people, this boat is 12 meters long with 2 strokes!</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>4 - 5 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>7 am - 12 pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activities</strong><br>Trolling, snorkeling, coral fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Tanjung Benoa to Nusa Dua or Indiana Ocean area</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Capacity</strong><br>3-5 people</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Notice</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:2px;">
+                <li><strong style="color:#fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color:#fff;">Experienced Crew:</strong> The local captain and crew will lead your way professionally</li>
+                <li><strong style="color:#fff;">Various Fishing Targets:</strong> Snappers, Blue Crevally, Scribbled Filefish, etc</li>
+                <li><strong style="color:#fff;">Weather Policy:</strong> The trips might be changed or rescheduled according to the sea conditions for your own safety</li>
+                <li><strong style="color:#fff;">Boat Type:</strong> The boat will be using a Suzuki engine. The type will be different for every boat</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Fishing equipments, baits</li>
+                <li>Snorkeling equipments (based on request)</li>
+                <li>Lunch box, soft drink, and mineral water</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Sweet Stanly Half-Day Boat 115 -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Sweet Stanly Half-Day with Boat 115</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 7.500.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Fill the joy along with your friends and family! It is definitely perfect for a small group since the boat is 10 meters long with 2 strokes. You can bring your friends or family with the maximum capacity of 5 people only.</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>4 - 5 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>7 am - 12 pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activities</strong><br>Trolling, snorkeling, coral fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Tanjung Benoa to Nusa Dua or Indiana Ocean area</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Capacity</strong><br>3-5 people</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Notice</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:2px;">
+                <li><strong style="color:#fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color:#fff;">Experienced Crew:</strong> The local captain and crew will lead your way professionally</li>
+                <li><strong style="color:#fff;">Various Fishing Targets:</strong> Snappers, Blue Crevally, Scribbled Filefish, etc</li>
+                <li><strong style="color:#fff;">Weather Policy:</strong> The trips might be changed or rescheduled according to the sea conditions for your own safety</li>
+                <li><strong style="color:#fff;">Boat Type:</strong> The boat will be using a Suzuki engine. The type will be different for every boat</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Fishing equipments, baits</li>
+                <li>Snorkeling equipments (based on request)</li>
+                <li>Lunch box, soft drink, and mineral water</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /heli-modal-body -->
+
+        <!-- Footer CTA -->
+        <div class="heli-modal-footer">
+          <p>Prices are per private boat. Secure your trip and enjoy the ultimate fishing experience in Bali.</p>
+          <a
+            class="heli-modal-cta"
+            href="https://wa.me/6282229299866"
+            target="_blank"
+            rel="noreferrer"
+          >Book via WhatsApp</a>
+        </div>
+
+      </div><!-- /heli-modal -->
+    </div><!-- /fishing-modal-overlay -->
+
+    <!-- ── MISSION Boat Charter Modal ─────────────────────────── -->
+    <div
+      id="mission-modal"
+      class="heli-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Private Boat Charter MISSION — Details"
+      onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
+    >
+      <div class="heli-modal">
+
+        <!-- Hero strip -->
+        <div class="heli-modal-hero">
+          <img src="assets/services-motorboat-header.jpg" alt="MISSION private speedboat" />
+          <div class="heli-modal-hero-content">
+            <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
+            <h2>Private Boat Charter <span class="editorial-word">MISSION</span></h2>
+          </div>
+          <button
+            class="heli-modal-close"
+            aria-label="Close"
+            onclick="document.getElementById('mission-modal').classList.remove('is-open'); document.body.style.overflow='';"
+          >&times;</button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="heli-modal-body">
+
+          <!-- Intro -->
+          <div style="padding: 0 0 32px; color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6;">
+            <p><strong style="color: #fff;">Capacity: Up to 12 People</strong></p>
+            <p style="margin-top: 12px;">Get ready for an awesome adventure on our Private Yacht Day Trip to Nusa Penida! We'll start from Tanjung Benoa harbour, and it's all about having a great time on the water and exploring the beautiful Nusa Penida island.</p>
+          </div>
+
+          <!-- HIGHLIGHTS -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">HIGHLIGHTS</span>
+            </div>
+            <div class="heli-port">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div>
+                  <p style="color: #fff; font-size: 0.85rem; font-weight: 600; margin: 0 0 4px;">Cool Yacht Ride</p>
+                  <p style="color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.55; margin: 0;">Imagine cruising on a fancy yacht, feeling the wind and enjoying the beautiful views of the Bali Sea. You'll travel in a really nice boat, making the journey as exciting as the destination.</p>
+                </div>
+                <div>
+                  <p style="color: #fff; font-size: 0.85rem; font-weight: 600; margin: 0 0 4px;">Snorkeling Fun at Manta Bay, Crystal Bay &amp; Gamat Bay</p>
+                  <p style="color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.55; margin: 0;">We'll take you to the best underwater panoramas around Nusa Penida — super clear water, lots of cool fish, and a chance to swim with Manta rays.</p>
+                </div>
+                <div>
+                  <p style="color: #fff; font-size: 0.85rem; font-weight: 600; margin: 0 0 4px;">Fun Fishing &amp; Barbecue Delight</p>
+                  <p style="color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.55; margin: 0;">Engage in lively bottom fishing, trying your luck to catch some fish on board. Enjoy the excitement of fishing, and later, unwind at a beachside restaurant with a barbecue feast featuring your fresh catch.</p>
+                </div>
+                <div>
+                  <p style="color: #fff; font-size: 0.85rem; font-weight: 600; margin: 0 0 4px;">Lunch with Ocean Views</p>
+                  <p style="color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.55; margin: 0;">Dock at a picturesque beachside restaurant for a delectable lunch. Relish a variety of tasty dishes with the ocean as your backdrop.</p>
+                </div>
+                <div>
+                  <p style="color: #fff; font-size: 0.85rem; font-weight: 600; margin: 0 0 4px;">Guides to Help You Out</p>
+                  <p style="color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.55; margin: 0;">Our friendly guides will be there to show you around, share interesting stuff about the local culture, and make sure you have a blast.</p>
+                </div>
+                <div>
+                  <p style="color: #fff; font-size: 0.85rem; font-weight: 600; margin: 0 0 4px;">Chill Sunset Cruise</p>
+                  <p style="color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.55; margin: 0;">To end the day, we'll take you back to the harbour on a relaxing cruise, just in time for a beautiful sunset over Bali.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WHAT IS INCLUDED -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">WHAT IS INCLUDED</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+                <li>1 captain &amp; 1 crew, fuel, cruising permit</li>
+                <li>Seasafe tracking, satellite phone</li>
+                <li>Fishing tool, snorkeling gear, table</li>
+                <li>Insurance, life jacket, life ring, pool towel</li>
+                <li>Mineral water, soft drink, ice box</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- BOAT SPECIFICATIONS -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">SONY LEE BOAT SPECIFICATION</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.82rem; line-height: 1.6; padding-left: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 4px;">
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Type</strong> &nbsp;&nbsp; Monohull speed boat</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Capacity</strong> &nbsp;&nbsp; Max 12 pax</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Length</strong> &nbsp;&nbsp; 11 meters</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Width</strong> &nbsp;&nbsp; 2.79 meters</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Fuel</strong> &nbsp;&nbsp; 250 liters</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Engine</strong> &nbsp;&nbsp; 4 stroke, 250 &times; 2</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Facilities</strong> &nbsp;&nbsp; 1 toilet, 1 bedroom</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Activities</strong> &nbsp;&nbsp; Snorkeling &amp; fishing</li>
+                <li><strong style="color: rgba(255,255,255,0.5); font-weight: 500;">Safety</strong> &nbsp;&nbsp; Sea Safe Tracking, life jacket, life rings, insurance</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: One Day Cruise -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">One Day Cruise</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 11.800.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Explore Nusa Penida for 8 hours with your loved ones! Enjoy your cruise while snorkeling, fun fishing, or just a mere relaxing and quality time as you sail around the water in Nusa Penida! Departing from Tanjung Benoa, Sony Lee ready to accompany you with their amazing crew and adventure!</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>8 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>Flexible time</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activity</strong><br>Cruising, snorkeling, fun fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Destination</strong><br>Nusa Penida</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>1 captain &amp; 1 crew, fuel, cruising permit</li>
+                <li>Sea-safe tracking, satellite phone</li>
+                <li>Fishing tool, snorkeling gear, table</li>
+                <li>Insurance, life jacket, life ring, pool towel</li>
+                <li>Mineral water, soft drink, ice box</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Halfday Sunset Cruise -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Halfday Sunset Cruise</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 7.500.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">There is no other thing better than spotting the sunset while cruising around Nusa Dua with Sony Lee! The 4 hours cruise will take you to the unforgettable journey for a sunset sightseeing, snorkeling, and even fun fishing with those who you love the most!</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55); margin-bottom:14px;">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>4 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>15:00 / 16:00 pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Activity</strong><br>Sunset sightseeing, snorkeling, fun fishing</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Destination</strong><br>Nusa Dua</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.55); font-size:0.75rem; font-weight:600; letter-spacing:0.06em; margin:0 0 6px; text-transform:uppercase;">Inclusions</p>
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.8rem; line-height:1.6; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>1 captain &amp; 1 crew, fuel, cruising permit</li>
+                <li>Sea-safe tracking, satellite phone</li>
+                <li>Fishing tool, snorkeling gear, table</li>
+                <li>Insurance, life jacket, life ring, pool towel</li>
+                <li>Mineral water, soft drink, ice box</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /heli-modal-body -->
+
+        <!-- Footer CTA -->
+        <div class="heli-modal-footer">
+          <p>All prices are per private boat charter. Contact our concierge to check availability and book.</p>
+          <a
+            class="heli-modal-cta"
+            href="https://wa.me/6282229299866"
+            target="_blank"
+            rel="noreferrer"
+          >Book via WhatsApp</a>
+        </div>
+
+      </div><!-- /heli-modal -->
+    </div><!-- /mission-modal-overlay -->
+
+    <!-- ── Traditional Fishing Trip Modal ──────────────────── -->
+    <div
+      id="trad-fishing-modal"
+      class="heli-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Traditional Fishing Trip — Details"
+      onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
+    >
+      <div class="heli-modal">
+
+        <!-- Hero strip -->
+        <div class="heli-modal-hero">
+          <img src="assets/services-fishing-trip-generated.png" alt="Traditional Balinese jukung fishing" />
+          <div class="heli-modal-hero-content">
+            <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
+            <h2>Traditional <span class="editorial-word">Fishing Trip</span></h2>
+          </div>
+          <button
+            class="heli-modal-close"
+            aria-label="Close"
+            onclick="document.getElementById('trad-fishing-modal').classList.remove('is-open'); document.body.style.overflow='';"
+          >&times;</button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="heli-modal-body">
+
+          <!-- Overview -->
+          <div style="padding: 0 0 32px; color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6;">
+            <p><strong style="color: #fff;">Capacity: Up to 4 People</strong></p>
+            <p style="margin-top: 12px;">Discover the thrill of fishing in the pristine waters of South Bali! This fishing trip is suitable for beginners and advanced fishers. However, the maximum participants are limited to 3 - 4 people.</p>
+          </div>
+
+          <!-- HIGHLIGHTS -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">HIGHLIGHTS</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                <li><strong style="color: #fff;">Various Fishing Techniques:</strong> Try some fishing techniques. Available for bottom, jigging, popping, and trolling or mix some techniques, such as trolling and bottom or jigging and bottom</li>
+                <li><strong style="color: #fff;">Experienced Skipper:</strong> Sail with our professional fishing guide who knows all of the best spots for fishing</li>
+                <li><strong style="color: #fff;">Great Fishing Experience:</strong> Boost your confidence in fishing. Either it will be your first time or countless times. There is nothing to worry about!</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- INCLUSION -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">INCLUSION</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+                <li>Private jukung</li>
+                <li>Experienced local fishing guide</li>
+                <li>Fishing gear</li>
+                <li>Fishing baits</li>
+                <li>Mineral water</li>
+                <li>Lunch box</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NOTICE -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">NOTICE</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+                <li><strong style="color: #fff;">Fixed Price:</strong> The price is per boat for a private trip</li>
+                <li><strong style="color: #fff;">Experienced Captain:</strong> The local captain and crew will lead your fishing trip professionally. They definitely know which spot is the best for fishing</li>
+                <li><strong style="color: #fff;">Various Techniques:</strong> Bottom, jigging, popping, or trolling</li>
+                <li><strong style="color: #fff;">Inclusions:</strong> Private jukung, experienced fishing crew, fishing gear, fishing baits, mineral water, lunch box</li>
+                <li><strong style="color: #fff;">Weather Policy:</strong> The trip might be changed or rescheduled according to the sea conditions for your own safety</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ADD-ONS -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">ADD-ONS</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.6; padding-left: 1.2rem; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+                <li><strong style="color: #fff;">Hotel transfer:</strong> Price will be adjusted according to your hotel location</li>
+                <li><strong style="color: #fff;">BBQ arrangement:</strong> IDR 75.000 / kg</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PRICING: Big Game -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Big Game Fishing Trip to Nusa Penida</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 4.750.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Chase some big fish in the offshore with heavy-duty equipment. Test your luck and bring Giant Trevally, Dogtooth Tuna, and many more within your grip. Choose the technique that you prefer the most.</p>
+              <ul style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:4px;">
+                <li><strong style="color:#fff;">Trolling:</strong> Lure the bait into the ocean, tie them behind the boat as the boat roams around the sea</li>
+                <li><strong style="color:#fff;">Jigging:</strong> Throw the jig deep into the ocean until a certain depth. Move the jig up and down to attract the fish</li>
+                <li><strong style="color:#fff;">Popping:</strong> Use big popper on the surface of the sea. Pull the string firmly to get the fish</li>
+                <li><strong style="color:#fff;">Bottom Fishing:</strong> Use fresh bait to attract the fish. Throw it to a certain depth and bring some big fish home</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.4); font-size:0.75rem; margin:0 0 14px;">Price is per boat. Maximum 4 anglers.</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55);">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>8 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Techniques</strong><br>Jigging, Popping, Trolling, Bottom</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>6am–11am or 1pm–6pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>West Nusa Penida</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.45); font-size:0.75rem; margin:12px 0 0;"><strong style="color:rgba(255,255,255,0.6);">Add-Ons:</strong> Snorkeling IDR 200.000/person &nbsp;&middot;&nbsp; BBQ IDR 75.000/kg</p>
+            </div>
+          </div>
+
+          <!-- PRICING: Advanced -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Advanced Fishing Trip to Nusa Dua</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 3.500.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Choose this package if you consider yourself as an experienced angler.</p>
+              <ul style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:4px;">
+                <li><strong style="color:#fff;">Jigging:</strong> A more active technique to entice predators from the deep</li>
+                <li><strong style="color:#fff;">Popping:</strong> Surface action fishing, perfect for explosive strikes</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.4); font-size:0.75rem; margin:0 0 14px;">Price is per boat. Maximum 2 anglers.</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55);">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>6 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Techniques</strong><br>Jigging, Popping</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>6am–12pm or 12pm–6pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Nusa Dua</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.45); font-size:0.75rem; margin:12px 0 0;"><strong style="color:rgba(255,255,255,0.6);">Add-Ons:</strong> BBQ IDR 75.000/kg</p>
+            </div>
+          </div>
+
+          <!-- PRICING: Combination -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Combination Fishing Technique</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 2.800.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Choose this package if you want to mix two techniques during the trip.</p>
+              <ul style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:4px;">
+                <li><strong style="color:#fff;">Trolling &amp; Jigging:</strong> Chase pelagic fish while combining deep-water action</li>
+                <li><strong style="color:#fff;">Trolling &amp; Bottom Fishing:</strong> Balance open-water targets with reef species</li>
+                <li><strong style="color:#fff;">Popping &amp; Jigging:</strong> High-energy mix for both surface and deep strikes</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.4); font-size:0.75rem; margin:0 0 14px;">Price is per boat. Maximum 3 anglers. Extra person: IDR 300.000/person.</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55);">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>5 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Techniques</strong><br>Trolling &amp; jigging / &amp; bottom / Popping &amp; jigging</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>6am–11am or 1pm–6pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Serangan</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.45); font-size:0.75rem; margin:12px 0 0;"><strong style="color:rgba(255,255,255,0.6);">Add-Ons:</strong> Snorkeling IDR 200.000/person &nbsp;&middot;&nbsp; BBQ IDR 75.000/kg</p>
+            </div>
+          </div>
+
+          <!-- PRICING: Single -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">Single Fishing Technique</span>
+            </div>
+            <div class="heli-port">
+              <div style="display:flex; align-items:baseline; gap:12px; margin-bottom:6px;">
+                <span style="color:#2ed573; font-size:1.1rem; font-weight:700;">Rp. 2.100.000</span>
+                <span style="color:rgba(255,255,255,0.4); font-size:0.72rem; letter-spacing:0.05em;">BEST RATE GUARANTEED</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.55; margin:0 0 14px;">Choose this package if you want to focus on mastering one technique during the trip.</p>
+              <ul style="color:rgba(255,255,255,0.65); font-size:0.82rem; line-height:1.6; padding-left:1.2rem; margin:0 0 14px; display:flex; flex-direction:column; gap:4px;">
+                <li><strong style="color:#fff;">Trolling:</strong> Target pelagic fish while cruising the open waters</li>
+                <li><strong style="color:#fff;">Bottom Fishing:</strong> Drop lines for reef dwellers and groupers</li>
+                <li><strong style="color:#fff;">Jigging:</strong> A more active technique to entice predators from the deep</li>
+                <li><strong style="color:#fff;">Popping:</strong> Surface action fishing, perfect for explosive strikes</li>
+              </ul>
+              <p style="color:rgba(255,255,255,0.4); font-size:0.75rem; margin:0 0 14px;">Price is per boat. Maximum 3 anglers. Extra person: IDR 300.000/person.</p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.78rem; color:rgba(255,255,255,0.55);">
+                <span><strong style="color:rgba(255,255,255,0.8);">Duration</strong><br>5 hours</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Technique</strong><br>Bottom, jigging, popping, or trolling</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Departure</strong><br>6am–11am or 1pm–6pm</span>
+                <span><strong style="color:rgba(255,255,255,0.8);">Route</strong><br>Serangan</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.45); font-size:0.75rem; margin:12px 0 0;"><strong style="color:rgba(255,255,255,0.6);">Add-Ons:</strong> Snorkeling IDR 200.000/person &nbsp;&middot;&nbsp; BBQ IDR 75.000/kg</p>
+            </div>
+          </div>
+
+        </div><!-- /heli-modal-body -->
+
+        <!-- Footer CTA -->
+        <div class="heli-modal-footer">
+          <p>Prices are per private jukung. Contact our concierge to check availability and book.</p>
+          <a
+            class="heli-modal-cta"
+            href="https://wa.me/6282229299866"
+            target="_blank"
+            rel="noreferrer"
+          >Book via WhatsApp</a>
+        </div>
+
+      </div><!-- /heli-modal -->
+    </div><!-- /trad-fishing-modal-overlay -->
 
     <!-- ── Footer ─────────────────────────────────────────────── -->
     <footer class="site-footer">

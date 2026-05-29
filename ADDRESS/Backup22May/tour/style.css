@@ -1,0 +1,192 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -ms-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -ms-content-zooming: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  background-color: #000;
+  color: #fff;
+}
+
+a, a:hover, a:active, a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+#pano {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ================= TITLE BAR ================= */
+
+#titleBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+#titleBar .sceneName {
+  width: 100%;
+  height: 100%;
+  line-height: 30px;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: text;
+}
+
+/* ================= BUTTONS ================= */
+
+#fullscreenToggle,
+#autorotateToggle,
+#sceneListToggle,
+.viewControlButton {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ================= SCENE LIST ================= */
+
+#sceneList {
+  position: absolute;
+  top: 0;
+  left: -220px;
+  padding-top: 40px;
+  width: 220px;
+  max-height: 100%;
+  overflow-y: auto;
+  transition: margin-left 0.5s ease-in-out;
+}
+
+#sceneList .scenes {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#sceneList.enabled {
+  margin-left: 220px;
+}
+
+#sceneList .scene {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+
+#sceneList .scene .text {
+  padding: 0 15px;
+  line-height: 30px;
+  white-space: nowrap;
+}
+
+.no-touch #sceneList .scene:hover,
+#sceneList .scene.current {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* ================= LINK HOTSPOT (ARROWS) ================= */
+
+/* 4x smaller arrows + 50% black */
+.link-hotspot {
+  transform: scale(0.25);
+  transform-origin: center center;
+  opacity: 0.5;
+}
+
+/* PNG arrow icons */
+.link-hotspot img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+/* SVG arrow icons */
+.link-hotspot svg {
+  fill: rgba(0, 0, 0, 0.5);
+}
+
+/* Optional hover effect */
+.link-hotspot:hover {
+  opacity: 0.6;
+}
+
+/* ================= LINK HOTSPOT TOOLTIP ================= */
+
+.link-hotspot-tooltip {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* ================= INFO HOTSPOT ================= */
+
+.info-hotspot .info-hotspot-header {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info-hotspot .info-hotspot-close-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info-hotspot .info-hotspot-text {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ================= INFO MODAL ================= */
+
+.info-hotspot-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info-hotspot-modal .info-hotspot-header {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info-hotspot-modal .info-hotspot-close-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.info-hotspot-modal .info-hotspot-text {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* ================= VIEW CONTROLS ================= */
+
+.viewControlButton .icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ================= MOBILE ================= */
+
+.mobile #titleBar .sceneName {
+  line-height: 40px;
+}

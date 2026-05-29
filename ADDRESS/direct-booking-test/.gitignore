@@ -1,0 +1,6 @@
+node_modules/
+client/dist/
+server/.env
+server/.token-cache.json
+server/.token-block.json
+
