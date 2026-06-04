@@ -983,7 +983,7 @@
               <span class="upsell-card-badge">Up to 12 guests</span>
             </div>
             <div class="upsell-card-body">
-              <h3 class="upsell-card-title">Private Boat Charter &mdash; MISSION</h3>
+              <h3 class="upsell-card-title">Private Boat Charter</h3>
               <div class="upsell-card-price">
                 <span>Full Day Cruise &mdash; Rp. 11.800.000</span>
                 <span>Halfday Sunset Cruise &mdash; Rp. 7.500.000</span>
@@ -1006,26 +1006,26 @@
             <div class="upsell-card-img">
               <img
                 src="assets/services-diving-trip-generated.png"
-                alt="Diving trip in Nusa Penida"
+                alt="Private Diving Trip from Nusa Penida"
                 loading="lazy"
               />
-              <span class="upsell-card-badge">Min 2 pax</span>
+              <span class="upsell-card-badge">Max 12 pax / boat</span>
             </div>
             <div class="upsell-card-body">
-              <h3 class="upsell-card-title">Nusa Penida Diving Package</h3>
+              <h3 class="upsell-card-title">Private Diving Trip (start from Nusa Penida)</h3>
               <div class="upsell-card-price">
-                <span>Certified — IDR 2,390,000 / pax</span>
-                <span>Non-certified — IDR 2,630,000 / pax</span>
+                <span>Agent Rate: IDR 21,360,000 / boat (max. 12 pax)</span>
+                <span>Non-certified: + IDR 200,000 / pax</span>
               </div>
               <p class="upsell-card-desc">
-                Full roundtrip day trip from Bali to Nusa Penida. Includes private hotel transfers, Sanur harbour
-                transfer, roundtrip public fast boat, and all diving equipment.
+                Private diving boat to Manta Point and Crystal Bay. Certified divers rate. Non-certified guests add IDR 200,000/pax. Includes dive master, equipment, lunch, and more.
               </p>
               <a
                 class="upsell-card-cta"
-                href="contact-concierge.html"
+                href="#"
                 id="cta-diving-nusapenida"
-              >Request via Concierge</a>
+                onclick="document.getElementById('diving-modal').classList.add('is-open'); document.body.style.overflow='hidden'; return false;"
+              >View Details</a>
             </div>
           </article>
 
@@ -1111,7 +1111,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/services-bali-adventures-generated.png"
+                src="assets/balinese_evening_generated.png"
                 alt="Traditional Balinese dance and feast evening"
                 loading="lazy"
               />
@@ -1356,7 +1356,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/services-yogaaddress.avif"
+                src="assets/qigong_practice_generated.png"
                 alt="Qi Gong"
                 loading="lazy"
               />
@@ -1381,7 +1381,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/services-yogaaddress.avif"
+                src="assets/personal_trainer_generated.png"
                 alt="Personal Trainer"
                 loading="lazy"
               />
@@ -1484,7 +1484,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/motorcycle_rental_generated.png"
+                src="assets/nmax_scooter_generated.png"
                 alt="Motorcycle rental for exploring Uluwatu and Bali"
                 loading="lazy"
               />
@@ -1511,7 +1511,7 @@
           <article class="upsell-card">
             <div class="upsell-card-img">
               <img
-                src="assets/private_driver_generated.png"
+                src="assets/avanza_driver_generated.png"
                 alt="Private driver and vehicle for airport transfers and sightseeing"
                 loading="lazy"
               />
@@ -2233,6 +2233,7 @@
           var f = document.getElementById('fishing-modal');
           var ms = document.getElementById('mission-modal');
           var tf = document.getElementById('trad-fishing-modal');
+          var dv = document.getElementById('diving-modal');
           if (m && m.classList.contains('is-open')) {
             m.classList.remove('is-open');
             document.body.style.overflow = '';
@@ -2247,6 +2248,10 @@
           }
           if (tf && tf.classList.contains('is-open')) {
             tf.classList.remove('is-open');
+            document.body.style.overflow = '';
+          }
+          if (dv && dv.classList.contains('is-open')) {
+            dv.classList.remove('is-open');
             document.body.style.overflow = '';
           }
         }
@@ -2550,17 +2555,17 @@
       class="heli-modal-overlay"
       role="dialog"
       aria-modal="true"
-      aria-label="Private Boat Charter MISSION — Details"
+      aria-label="Private Boat Charter — Details"
       onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
     >
       <div class="heli-modal">
 
         <!-- Hero strip -->
         <div class="heli-modal-hero">
-          <img src="assets/services-motorboat-header.jpg" alt="MISSION private speedboat" />
+          <img src="assets/services-motorboat-header.jpg" alt="Private speedboat" />
           <div class="heli-modal-hero-content">
             <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
-            <h2>Private Boat Charter <span class="editorial-word">MISSION</span></h2>
+            <h2>Private Boat Charter</h2>
           </div>
           <button
             class="heli-modal-close"
@@ -2720,6 +2725,92 @@
 
       </div><!-- /heli-modal -->
     </div><!-- /mission-modal-overlay -->
+
+    <!-- ── Private Diving Trip Modal ────────────────────────── -->
+    <div
+      id="diving-modal"
+      class="heli-modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Private Diving Trip — Details"
+      onclick="if(event.target===this){this.classList.remove('is-open'); document.body.style.overflow='';}"
+    >
+      <div class="heli-modal">
+
+        <!-- Hero strip -->
+        <div class="heli-modal-hero">
+          <img src="assets/services-diving-trip-generated.png" alt="Private Diving Trip Nusa Penida" />
+          <div class="heli-modal-hero-content">
+            <p class="heli-modal-eyebrow">Ocean &amp; Adventure</p>
+            <h2>Private <span class="editorial-word">Diving Trip</span></h2>
+          </div>
+          <button
+            class="heli-modal-close"
+            aria-label="Close"
+            onclick="document.getElementById('diving-modal').classList.remove('is-open'); document.body.style.overflow='';"
+          >&times;</button>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="heli-modal-body">
+
+          <!-- Intro -->
+          <div style="padding: 0 0 32px; color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6;">
+            <p><strong style="color: #fff;">Private Diving Trip (start from Nusa Penida)</strong></p>
+            <p style="margin-top: 8px;"><strong style="color: #fff;">Agent Rate: IDR 21,360,000 / boat (max. 12 pax)</strong></p>
+            <p style="margin-top: 8px; color: rgba(255,255,255,0.6); font-size: 0.85rem;">This price is valid for Certified Divers. If the guest does not have a diving certificate, an extra cost of IDR 200,000 / pax applies.</p>
+          </div>
+
+          <!-- INCLUSIONS -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">INCLUSIONS</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.82rem; line-height:1.7; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Private diving boat</li>
+                <li>2 x dive to Manta Point and Crystal Bay for 5–6 hours <span style="color:rgba(255,255,255,0.4); font-size:0.78rem;">(spots and duration depends on weather conditions)</span></li>
+                <li>Dive and snorkeling insurance</li>
+                <li>Professional Dive Master and Instructor</li>
+                <li>Dive equipment</li>
+                <li>Snorkeling guide and equipment</li>
+                <li>Mineral water, coffee/tea, biscuits</li>
+                <li>Fresh shower, body foam, shampoo</li>
+                <li>Towel</li>
+                <li>Lunch <span style="color:rgba(255,255,255,0.4); font-size:0.78rem;">(local menu, at diving office)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NOT INCLUDED -->
+          <div class="heli-cat">
+            <div class="heli-cat-header">
+              <span class="heli-cat-title" style="margin-left: 0;">NOT INCLUDED</span>
+            </div>
+            <div class="heli-port">
+              <ul style="color:rgba(255,255,255,0.6); font-size:0.82rem; line-height:1.7; padding-left:1.2rem; margin:0; display:flex; flex-direction:column; gap:2px;">
+                <li>Transport from Bali to Nusa Penida (car and boat)</li>
+                <li>Underwater documentation <span style="color:rgba(255,255,255,0.4); font-size:0.78rem;">(available upon request with extra cost)</span></li>
+                <li>Personal expenses</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /heli-modal-body -->
+
+        <!-- Footer CTA -->
+        <div class="heli-modal-footer">
+          <p>If you have any queries, please don't hesitate to contact us. Thank you.</p>
+          <a
+            class="heli-modal-cta"
+            href="https://wa.me/6282229299866"
+            target="_blank"
+            rel="noreferrer"
+          >Book via WhatsApp</a>
+        </div>
+
+      </div><!-- /heli-modal -->
+    </div><!-- /diving-modal-overlay -->
 
     <!-- ── Traditional Fishing Trip Modal ──────────────────── -->
     <div
