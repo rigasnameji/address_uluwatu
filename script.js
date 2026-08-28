@@ -16,7 +16,7 @@ const navLinks = document.querySelectorAll(".main-nav a, .site-footer a, .text-l
 const tourEmbed = document.querySelector("[data-tour-embed]");
 const tourLinks = document.querySelectorAll("[data-tour-link]");
 const videoShells = document.querySelectorAll("[data-video-shell]");
-const CONCIERGE_EMAIL = "addressbaliulu@gmail.com";
+const CONCIERGE_EMAIL = "addressbaliulu@gmail.com,addressbaliuluwatu@gmail.com";
 
 const syncHeader = () => {
   header.classList.toggle("is-scrolled", window.scrollY > 12);
