@@ -60,7 +60,7 @@ router.post('/', async (req, res) => {
     return axios.post(
       'https://api.resend.com/emails',
       { from, to: Array.isArray(to) ? to : [to], reply_to: email, subject: `New Enquiry from ${name} — Address Bali Villa`, html },
-      { headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' } }
+      { headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' }, timeout: 10000 }
     );
   };
 

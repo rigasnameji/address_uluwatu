@@ -11,7 +11,7 @@ async function callGuesty(payload, retries = 2) {
     return await axios.post(
       'https://booking.guesty.com/api/reservations/quotes',
       payload,
-      { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+      { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, timeout: 20000 }
     );
   } catch (err) {
     const status = err?.response?.status;

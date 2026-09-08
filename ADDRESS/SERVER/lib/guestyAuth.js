@@ -87,7 +87,7 @@ async function refreshToken() {
     res = await axios.post(
       'https://booking.guesty.com/oauth2/token',
       params.toString(),
-      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, timeout: 15000 }
     );
   } catch (err) {
     if (err?.response?.status === 429) {

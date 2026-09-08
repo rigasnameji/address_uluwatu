@@ -17,7 +17,7 @@ async function fetchListing() {
   const token = await getToken();
   return axios.get(
     `https://booking.guesty.com/api/listings/${LISTING_ID}`,
-    { headers: { Authorization: `Bearer ${token}` } }
+    { headers: { Authorization: `Bearer ${token}` }, timeout: 20000 }
   );
 }
 

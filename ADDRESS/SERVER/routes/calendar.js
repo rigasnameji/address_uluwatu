@@ -19,6 +19,7 @@ async function fetchCalendar(from, to) {
     {
       params: { from, to },
       headers: { Authorization: `Bearer ${token}` },
+      timeout: 20000,
     }
   );
 }
