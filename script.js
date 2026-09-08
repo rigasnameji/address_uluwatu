@@ -564,7 +564,23 @@ const initDirectBooking = () => {
     return data;
   };
 
-  const apiFetch = (path, options) => fetch(`${apiBase}${path}`, options).then(parseResponse);
+  // Never let a slow upstream leave the button spinning forever.
+  const API_TIMEOUT_MS = 45000;
+  const apiFetch = (path, options = {}) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), options.timeoutMs || API_TIMEOUT_MS);
+    return fetch(`${apiBase}${path}`, { ...options, signal: controller.signal })
+      .catch((error) => {
+        if (error?.name === "AbortError") {
+          const timeoutError = new Error("The booking service is taking too long to respond. Please try again, or message us on WhatsApp and we will confirm right away.");
+          timeoutError.status = 504;
+          throw timeoutError;
+        }
+        throw error;
+      })
+      .then(parseResponse)
+      .finally(() => clearTimeout(timer));
+  };
   const isRecoverableApiError = (error) =>
     error?.name === "TypeError" ||
     /failed to fetch|networkerror|load failed/i.test(error?.message || "") ||
